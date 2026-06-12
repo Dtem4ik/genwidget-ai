@@ -1,0 +1,163 @@
+{
+  "apartments": [
+    {
+      "id": "apt-010",
+      "complex": "Northbay Park",
+      "district": "Green Quarter",
+      "rooms": 2,
+      "area": 59.6,
+      "floor": 12,
+      "totalFloors": 14,
+      "price": 133500,
+      "currency": "USD",
+      "pricePerM2": 2240,
+      "features": ["river view"],
+      "floorPlan": {
+        "width": 78,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 13.1,
+            "polygon": [
+              [23.4, 27],
+              [54.6, 27],
+              [54.6, 60],
+              [23.4, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 14.8,
+            "polygon": [
+              [0, 0],
+              [42.9, 0],
+              [42.9, 27],
+              [0, 27]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 12.1,
+            "polygon": [
+              [42.9, 0],
+              [78, 0],
+              [78, 27],
+              [42.9, 27]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 9.8,
+            "polygon": [
+              [0, 27],
+              [23.4, 27],
+              [23.4, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 5.4,
+            "polygon": [
+              [54.6, 27],
+              [78, 27],
+              [78, 45],
+              [54.6, 45]
+            ]
+          },
+          {
+            "id": "balcony",
+            "label": "Balcony",
+            "area": 4.5,
+            "polygon": [
+              [54.6, 45],
+              [78, 45],
+              [78, 60],
+              [54.6, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-020",
+      "complex": "Northbay Park",
+      "district": "Green Quarter",
+      "rooms": 2,
+      "area": 62.8,
+      "floor": 4,
+      "totalFloors": 14,
+      "price": 154500,
+      "currency": "USD",
+      "pricePerM2": 2460,
+      "features": ["parking"],
+      "floorPlan": {
+        "width": 90,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 11.3,
+            "polygon": [
+              [31.5, 24],
+              [58.5, 24],
+              [58.5, 60],
+              [31.5, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 16.3,
+            "polygon": [
+              [0, 0],
+              [58.5, 0],
+              [58.5, 24],
+              [0, 24]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 12.1,
+            "polygon": [
+              [58.5, 0],
+              [90, 0],
+              [90, 33],
+              [58.5, 33]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 13.2,
+            "polygon": [
+              [0, 24],
+              [31.5, 24],
+              [31.5, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 9.9,
+            "polygon": [
+              [58.5, 33],
+              [90, 33],
+              [90, 60],
+              [58.5, 60]
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

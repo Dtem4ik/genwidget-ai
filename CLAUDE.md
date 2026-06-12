@@ -15,7 +15,7 @@ stocks) instead of text. Demo at pet1.dtem4ik.dev.
 - `pnpm typecheck` — tsc --noEmit
 - `pnpm format` / `pnpm format:check` — prettier
 - `pnpm build` — production build
-- `pnpm test` — vitest (from phase 2)
+- `pnpm test` — vitest (component tests)
 - `pnpm e2e` — playwright (from phase 7)
 
 ## Architecture
@@ -40,4 +40,5 @@ providers is a config change, never a rewrite.
 
 ## How to add a widget
 
-See `docs/adding-a-widget.md` (lands in phase 2) — follow it exactly.
+See `docs/adding-a-widget.md` — follow it exactly. Reference implementation:
+`widgets/apartments/` (searchApartments tool + ApartmentResults widget).

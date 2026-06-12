@@ -24,8 +24,19 @@ project — Google stopped publishing fixed numbers in docs):
 - Free-tier requests may be used by Google to improve models — fine for this demo,
   do not send anything private
 
-Tool-calling: 2.5 Flash supports function calling; quality for our widget tools gets
-evaluated in phase 2 (sharp tool descriptions + few-shot in system prompt if needed).
+### Tool-calling quality (verified 2026-06-13, phase 2)
+
+`gemini-2.5-flash` with `searchApartments` (4 optional filter args):
+
+- "show me 2-bedroom apartments under $200k" → correct call on the first try:
+  `{rooms: 2, maxPrice: 200000}`; one short text comment after the widget,
+  no listing data repeated as text (system prompt rule respected)
+- Partial-args streaming works: filter chips appear in the skeleton while the
+  JSON is still streaming
+- No few-shot needed so far — `.describe()` on every schema field plus an
+  explicit "Use for ANY question about…" tool description was enough
+- Re-verify when adding tools with overlapping domains (phase 4: compare vs
+  recommend) — that's where flash models usually start picking wrong tools
 
 ## Fallback queue (not yet wired)
 

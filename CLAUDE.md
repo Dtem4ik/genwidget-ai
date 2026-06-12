@@ -1,4 +1,4 @@
-# widgetloom — agent guide
+# genwidget-ai — agent guide
 
 @AGENTS.md
 

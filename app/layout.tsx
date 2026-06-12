@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Widgetloom",
+  title: "GenWidget AI",
   description:
     "AI chat that answers with live React widgets instead of text — floor plans, product comparisons, stocks, weather. Extensible generative UI platform.",
 };

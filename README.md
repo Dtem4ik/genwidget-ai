@@ -1,10 +1,10 @@
-# Widgetloom
+# GenWidget AI
 
 > AI chat that answers with live React widgets instead of text — floor plans, product
 > comparisons, stocks, weather. An extensible generative UI platform built on streaming
 > tool-calls. Works with any LLM provider.
 
-[![CI](https://github.com/Dtem4ik/widgetloom/actions/workflows/ci.yml/badge.svg)](https://github.com/Dtem4ik/widgetloom/actions/workflows/ci.yml)
+[![CI](https://github.com/Dtem4ik/genwidget-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/Dtem4ik/genwidget-ai/actions/workflows/ci.yml)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue)](tsconfig.json)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 

@@ -39,7 +39,7 @@ export function Chat() {
           {messages.length === 0 && (
             <ConversationEmptyState
               icon={<MessageSquareIcon className="size-8" />}
-              title="Welcome to Widgetloom"
+              title="Welcome to GenWidget AI"
               description="Ask anything — soon the answers arrive as live widgets. For now, it talks."
             />
           )}

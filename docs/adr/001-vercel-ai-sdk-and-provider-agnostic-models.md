@@ -4,7 +4,7 @@ Date: 2026-06-12 · Status: accepted
 
 ## Context
 
-The core of Widgetloom is a chat that streams tool-calls into React widgets. We need
+The core of GenWidget AI is a chat that streams tool-calls into React widgets. We need
 a streaming layer that: (1) streams partial tool-call arguments so widgets can render
 skeleton-first, (2) is not locked to one LLM vendor — the budget is $0/mo, so we must
 be able to hop between free tiers (Gemini → Groq → OpenRouter) without rewrites,

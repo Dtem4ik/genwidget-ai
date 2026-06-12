@@ -1,0 +1,3283 @@
+{
+  "apartments": [
+    {
+      "id": "apt-001",
+      "complex": "Solara Heights",
+      "district": "Riverside",
+      "rooms": 1,
+      "area": 43.8,
+      "floor": 20,
+      "totalFloors": 22,
+      "price": 129500,
+      "currency": "USD",
+      "pricePerM2": 2957,
+      "features": ["river view", "smart-home", "balcony"],
+      "floorPlan": {
+        "width": 96,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 3.5,
+            "polygon": [
+              [38.4, 0],
+              [57.6, 0],
+              [57.6, 24],
+              [38.4, 24]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 7,
+            "polygon": [
+              [57.6, 0],
+              [96, 0],
+              [96, 24],
+              [57.6, 24]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 7,
+            "polygon": [
+              [0, 0],
+              [38.4, 0],
+              [38.4, 24],
+              [0, 24]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 26.3,
+            "polygon": [
+              [0, 24],
+              [96, 24],
+              [96, 60],
+              [0, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-002",
+      "complex": "Northbay Park",
+      "district": "Green Quarter",
+      "rooms": 1,
+      "area": 38.5,
+      "floor": 5,
+      "totalFloors": 14,
+      "price": 89000,
+      "currency": "USD",
+      "pricePerM2": 2312,
+      "features": ["river view", "storage", "parking"],
+      "floorPlan": {
+        "width": 96,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 3.1,
+            "polygon": [
+              [38.4, 0],
+              [57.6, 0],
+              [57.6, 24],
+              [38.4, 24]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 6.2,
+            "polygon": [
+              [57.6, 0],
+              [96, 0],
+              [96, 24],
+              [57.6, 24]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 6.2,
+            "polygon": [
+              [0, 0],
+              [38.4, 0],
+              [38.4, 24],
+              [0, 24]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 23.1,
+            "polygon": [
+              [0, 24],
+              [96, 24],
+              [96, 60],
+              [0, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-003",
+      "complex": "Solara Heights",
+      "district": "Riverside",
+      "rooms": 1,
+      "area": 39,
+      "floor": 18,
+      "totalFloors": 22,
+      "price": 123000,
+      "currency": "USD",
+      "pricePerM2": 3154,
+      "features": ["parking", "park view"],
+      "floorPlan": {
+        "width": 96,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 3.1,
+            "polygon": [
+              [38.4, 0],
+              [57.6, 0],
+              [57.6, 24],
+              [38.4, 24]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 6.2,
+            "polygon": [
+              [57.6, 0],
+              [96, 0],
+              [96, 24],
+              [57.6, 24]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 6.2,
+            "polygon": [
+              [0, 0],
+              [38.4, 0],
+              [38.4, 24],
+              [0, 24]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 23.4,
+            "polygon": [
+              [0, 24],
+              [96, 24],
+              [96, 60],
+              [0, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-004",
+      "complex": "Northbay Park",
+      "district": "Green Quarter",
+      "rooms": 1,
+      "area": 38.5,
+      "floor": 13,
+      "totalFloors": 14,
+      "price": 99500,
+      "currency": "USD",
+      "pricePerM2": 2584,
+      "features": ["storage"],
+      "floorPlan": {
+        "width": 96,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 3.1,
+            "polygon": [
+              [38.4, 0],
+              [57.6, 0],
+              [57.6, 24],
+              [38.4, 24]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 6.2,
+            "polygon": [
+              [57.6, 0],
+              [96, 0],
+              [96, 24],
+              [57.6, 24]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 6.2,
+            "polygon": [
+              [0, 0],
+              [38.4, 0],
+              [38.4, 24],
+              [0, 24]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 23.1,
+            "polygon": [
+              [0, 24],
+              [96, 24],
+              [96, 60],
+              [0, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-005",
+      "complex": "Solara Heights",
+      "district": "Riverside",
+      "rooms": 1,
+      "area": 44.5,
+      "floor": 7,
+      "totalFloors": 22,
+      "price": 121500,
+      "currency": "USD",
+      "pricePerM2": 2730,
+      "features": ["parking", "smart-home", "balcony"],
+      "floorPlan": {
+        "width": 96,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 3.6,
+            "polygon": [
+              [38.4, 0],
+              [57.6, 0],
+              [57.6, 24],
+              [38.4, 24]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 7.1,
+            "polygon": [
+              [57.6, 0],
+              [96, 0],
+              [96, 24],
+              [57.6, 24]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 7.1,
+            "polygon": [
+              [0, 0],
+              [38.4, 0],
+              [38.4, 24],
+              [0, 24]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 26.7,
+            "polygon": [
+              [0, 24],
+              [96, 24],
+              [96, 60],
+              [0, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-006",
+      "complex": "Northbay Park",
+      "district": "Green Quarter",
+      "rooms": 1,
+      "area": 43.8,
+      "floor": 9,
+      "totalFloors": 14,
+      "price": 108500,
+      "currency": "USD",
+      "pricePerM2": 2477,
+      "features": ["river view", "parking", "park view"],
+      "floorPlan": {
+        "width": 96,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 3.5,
+            "polygon": [
+              [38.4, 0],
+              [57.6, 0],
+              [57.6, 24],
+              [38.4, 24]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 7,
+            "polygon": [
+              [57.6, 0],
+              [96, 0],
+              [96, 24],
+              [57.6, 24]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 7,
+            "polygon": [
+              [0, 0],
+              [38.4, 0],
+              [38.4, 24],
+              [0, 24]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 26.3,
+            "polygon": [
+              [0, 24],
+              [96, 24],
+              [96, 60],
+              [0, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-007",
+      "complex": "Solara Heights",
+      "district": "Riverside",
+      "rooms": 1,
+      "area": 42.3,
+      "floor": 4,
+      "totalFloors": 22,
+      "price": 133500,
+      "currency": "USD",
+      "pricePerM2": 3156,
+      "features": ["balcony"],
+      "floorPlan": {
+        "width": 96,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 3.4,
+            "polygon": [
+              [38.4, 0],
+              [57.6, 0],
+              [57.6, 24],
+              [38.4, 24]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 6.8,
+            "polygon": [
+              [57.6, 0],
+              [96, 0],
+              [96, 24],
+              [57.6, 24]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 6.8,
+            "polygon": [
+              [0, 0],
+              [38.4, 0],
+              [38.4, 24],
+              [0, 24]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 25.4,
+            "polygon": [
+              [0, 24],
+              [96, 24],
+              [96, 60],
+              [0, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-008",
+      "complex": "Northbay Park",
+      "district": "Green Quarter",
+      "rooms": 1,
+      "area": 42.9,
+      "floor": 3,
+      "totalFloors": 14,
+      "price": 95000,
+      "currency": "USD",
+      "pricePerM2": 2214,
+      "features": ["parking"],
+      "floorPlan": {
+        "width": 96,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 3.4,
+            "polygon": [
+              [38.4, 0],
+              [57.6, 0],
+              [57.6, 24],
+              [38.4, 24]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 6.9,
+            "polygon": [
+              [57.6, 0],
+              [96, 0],
+              [96, 24],
+              [57.6, 24]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 6.9,
+            "polygon": [
+              [0, 0],
+              [38.4, 0],
+              [38.4, 24],
+              [0, 24]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 25.7,
+            "polygon": [
+              [0, 24],
+              [96, 24],
+              [96, 60],
+              [0, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-009",
+      "complex": "Solara Heights",
+      "district": "Riverside",
+      "rooms": 2,
+      "area": 65.4,
+      "floor": 13,
+      "totalFloors": 22,
+      "price": 200500,
+      "currency": "USD",
+      "pricePerM2": 3066,
+      "features": ["smart-home", "balcony"],
+      "floorPlan": {
+        "width": 78,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 14.4,
+            "polygon": [
+              [23.4, 27],
+              [54.6, 27],
+              [54.6, 60],
+              [23.4, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 16.2,
+            "polygon": [
+              [0, 0],
+              [42.9, 0],
+              [42.9, 27],
+              [0, 27]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 13.2,
+            "polygon": [
+              [42.9, 0],
+              [78, 0],
+              [78, 27],
+              [42.9, 27]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 10.8,
+            "polygon": [
+              [0, 27],
+              [23.4, 27],
+              [23.4, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 5.9,
+            "polygon": [
+              [54.6, 27],
+              [78, 27],
+              [78, 45],
+              [54.6, 45]
+            ]
+          },
+          {
+            "id": "balcony",
+            "label": "Balcony",
+            "area": 4.9,
+            "polygon": [
+              [54.6, 45],
+              [78, 45],
+              [78, 60],
+              [54.6, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-010",
+      "complex": "Northbay Park",
+      "district": "Green Quarter",
+      "rooms": 2,
+      "area": 59.6,
+      "floor": 12,
+      "totalFloors": 14,
+      "price": 133500,
+      "currency": "USD",
+      "pricePerM2": 2240,
+      "features": ["river view"],
+      "floorPlan": {
+        "width": 78,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 13.1,
+            "polygon": [
+              [23.4, 27],
+              [54.6, 27],
+              [54.6, 60],
+              [23.4, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 14.8,
+            "polygon": [
+              [0, 0],
+              [42.9, 0],
+              [42.9, 27],
+              [0, 27]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 12.1,
+            "polygon": [
+              [42.9, 0],
+              [78, 0],
+              [78, 27],
+              [42.9, 27]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 9.8,
+            "polygon": [
+              [0, 27],
+              [23.4, 27],
+              [23.4, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 5.4,
+            "polygon": [
+              [54.6, 27],
+              [78, 27],
+              [78, 45],
+              [54.6, 45]
+            ]
+          },
+          {
+            "id": "balcony",
+            "label": "Balcony",
+            "area": 4.5,
+            "polygon": [
+              [54.6, 45],
+              [78, 45],
+              [78, 60],
+              [54.6, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-011",
+      "complex": "Solara Heights",
+      "district": "Riverside",
+      "rooms": 2,
+      "area": 58.8,
+      "floor": 3,
+      "totalFloors": 22,
+      "price": 171000,
+      "currency": "USD",
+      "pricePerM2": 2908,
+      "features": ["storage"],
+      "floorPlan": {
+        "width": 90,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 10.6,
+            "polygon": [
+              [31.5, 24],
+              [58.5, 24],
+              [58.5, 60],
+              [31.5, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 15.3,
+            "polygon": [
+              [0, 0],
+              [58.5, 0],
+              [58.5, 24],
+              [0, 24]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 11.3,
+            "polygon": [
+              [58.5, 0],
+              [90, 0],
+              [90, 33],
+              [58.5, 33]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 12.3,
+            "polygon": [
+              [0, 24],
+              [31.5, 24],
+              [31.5, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 9.3,
+            "polygon": [
+              [58.5, 33],
+              [90, 33],
+              [90, 60],
+              [58.5, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-012",
+      "complex": "Northbay Park",
+      "district": "Green Quarter",
+      "rooms": 2,
+      "area": 64.2,
+      "floor": 7,
+      "totalFloors": 14,
+      "price": 173000,
+      "currency": "USD",
+      "pricePerM2": 2695,
+      "features": ["smart-home", "storage"],
+      "floorPlan": {
+        "width": 90,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 11.6,
+            "polygon": [
+              [31.5, 24],
+              [58.5, 24],
+              [58.5, 60],
+              [31.5, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 16.7,
+            "polygon": [
+              [0, 0],
+              [58.5, 0],
+              [58.5, 24],
+              [0, 24]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 12.4,
+            "polygon": [
+              [58.5, 0],
+              [90, 0],
+              [90, 33],
+              [58.5, 33]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 13.5,
+            "polygon": [
+              [0, 24],
+              [31.5, 24],
+              [31.5, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 10.1,
+            "polygon": [
+              [58.5, 33],
+              [90, 33],
+              [90, 60],
+              [58.5, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-013",
+      "complex": "Solara Heights",
+      "district": "Riverside",
+      "rooms": 2,
+      "area": 55.4,
+      "floor": 10,
+      "totalFloors": 22,
+      "price": 170500,
+      "currency": "USD",
+      "pricePerM2": 3078,
+      "features": ["river view"],
+      "floorPlan": {
+        "width": 78,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 12.2,
+            "polygon": [
+              [23.4, 27],
+              [54.6, 27],
+              [54.6, 60],
+              [23.4, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 13.7,
+            "polygon": [
+              [0, 0],
+              [42.9, 0],
+              [42.9, 27],
+              [0, 27]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 11.2,
+            "polygon": [
+              [42.9, 0],
+              [78, 0],
+              [78, 27],
+              [42.9, 27]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 9.1,
+            "polygon": [
+              [0, 27],
+              [23.4, 27],
+              [23.4, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 5,
+            "polygon": [
+              [54.6, 27],
+              [78, 27],
+              [78, 45],
+              [54.6, 45]
+            ]
+          },
+          {
+            "id": "balcony",
+            "label": "Balcony",
+            "area": 4.2,
+            "polygon": [
+              [54.6, 45],
+              [78, 45],
+              [78, 60],
+              [54.6, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-014",
+      "complex": "Northbay Park",
+      "district": "Green Quarter",
+      "rooms": 2,
+      "area": 64,
+      "floor": 9,
+      "totalFloors": 14,
+      "price": 165000,
+      "currency": "USD",
+      "pricePerM2": 2578,
+      "features": ["parking", "balcony"],
+      "floorPlan": {
+        "width": 90,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 11.5,
+            "polygon": [
+              [31.5, 24],
+              [58.5, 24],
+              [58.5, 60],
+              [31.5, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 16.6,
+            "polygon": [
+              [0, 0],
+              [58.5, 0],
+              [58.5, 24],
+              [0, 24]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 12.3,
+            "polygon": [
+              [58.5, 0],
+              [90, 0],
+              [90, 33],
+              [58.5, 33]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 13.4,
+            "polygon": [
+              [0, 24],
+              [31.5, 24],
+              [31.5, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 10.1,
+            "polygon": [
+              [58.5, 33],
+              [90, 33],
+              [90, 60],
+              [58.5, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-015",
+      "complex": "Solara Heights",
+      "district": "Riverside",
+      "rooms": 2,
+      "area": 60.6,
+      "floor": 7,
+      "totalFloors": 22,
+      "price": 180000,
+      "currency": "USD",
+      "pricePerM2": 2970,
+      "features": ["smart-home", "balcony", "park view"],
+      "floorPlan": {
+        "width": 78,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 13.3,
+            "polygon": [
+              [23.4, 27],
+              [54.6, 27],
+              [54.6, 60],
+              [23.4, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 15,
+            "polygon": [
+              [0, 0],
+              [42.9, 0],
+              [42.9, 27],
+              [0, 27]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 12.3,
+            "polygon": [
+              [42.9, 0],
+              [78, 0],
+              [78, 27],
+              [42.9, 27]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 10,
+            "polygon": [
+              [0, 27],
+              [23.4, 27],
+              [23.4, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 5.5,
+            "polygon": [
+              [54.6, 27],
+              [78, 27],
+              [78, 45],
+              [54.6, 45]
+            ]
+          },
+          {
+            "id": "balcony",
+            "label": "Balcony",
+            "area": 4.5,
+            "polygon": [
+              [54.6, 45],
+              [78, 45],
+              [78, 60],
+              [54.6, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-016",
+      "complex": "Northbay Park",
+      "district": "Green Quarter",
+      "rooms": 2,
+      "area": 64.9,
+      "floor": 3,
+      "totalFloors": 14,
+      "price": 162000,
+      "currency": "USD",
+      "pricePerM2": 2496,
+      "features": ["river view", "storage"],
+      "floorPlan": {
+        "width": 90,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 11.7,
+            "polygon": [
+              [31.5, 24],
+              [58.5, 24],
+              [58.5, 60],
+              [31.5, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 16.9,
+            "polygon": [
+              [0, 0],
+              [58.5, 0],
+              [58.5, 24],
+              [0, 24]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 12.5,
+            "polygon": [
+              [58.5, 0],
+              [90, 0],
+              [90, 33],
+              [58.5, 33]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 13.6,
+            "polygon": [
+              [0, 24],
+              [31.5, 24],
+              [31.5, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 10.2,
+            "polygon": [
+              [58.5, 33],
+              [90, 33],
+              [90, 60],
+              [58.5, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-017",
+      "complex": "Solara Heights",
+      "district": "Riverside",
+      "rooms": 2,
+      "area": 65.9,
+      "floor": 8,
+      "totalFloors": 22,
+      "price": 206500,
+      "currency": "USD",
+      "pricePerM2": 3134,
+      "features": ["balcony", "park view"],
+      "floorPlan": {
+        "width": 90,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 11.9,
+            "polygon": [
+              [31.5, 24],
+              [58.5, 24],
+              [58.5, 60],
+              [31.5, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 17.1,
+            "polygon": [
+              [0, 0],
+              [58.5, 0],
+              [58.5, 24],
+              [0, 24]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 12.7,
+            "polygon": [
+              [58.5, 0],
+              [90, 0],
+              [90, 33],
+              [58.5, 33]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 13.8,
+            "polygon": [
+              [0, 24],
+              [31.5, 24],
+              [31.5, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 10.4,
+            "polygon": [
+              [58.5, 33],
+              [90, 33],
+              [90, 60],
+              [58.5, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-018",
+      "complex": "Northbay Park",
+      "district": "Green Quarter",
+      "rooms": 2,
+      "area": 60.8,
+      "floor": 8,
+      "totalFloors": 14,
+      "price": 155500,
+      "currency": "USD",
+      "pricePerM2": 2558,
+      "features": ["smart-home"],
+      "floorPlan": {
+        "width": 90,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 10.9,
+            "polygon": [
+              [31.5, 24],
+              [58.5, 24],
+              [58.5, 60],
+              [31.5, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 15.8,
+            "polygon": [
+              [0, 0],
+              [58.5, 0],
+              [58.5, 24],
+              [0, 24]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 11.7,
+            "polygon": [
+              [58.5, 0],
+              [90, 0],
+              [90, 33],
+              [58.5, 33]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 12.8,
+            "polygon": [
+              [0, 24],
+              [31.5, 24],
+              [31.5, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 9.6,
+            "polygon": [
+              [58.5, 33],
+              [90, 33],
+              [90, 60],
+              [58.5, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-019",
+      "complex": "Solara Heights",
+      "district": "Riverside",
+      "rooms": 2,
+      "area": 62.6,
+      "floor": 2,
+      "totalFloors": 22,
+      "price": 199000,
+      "currency": "USD",
+      "pricePerM2": 3179,
+      "features": ["smart-home"],
+      "floorPlan": {
+        "width": 78,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 13.8,
+            "polygon": [
+              [23.4, 27],
+              [54.6, 27],
+              [54.6, 60],
+              [23.4, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 15.5,
+            "polygon": [
+              [0, 0],
+              [42.9, 0],
+              [42.9, 27],
+              [0, 27]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 12.7,
+            "polygon": [
+              [42.9, 0],
+              [78, 0],
+              [78, 27],
+              [42.9, 27]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 10.3,
+            "polygon": [
+              [0, 27],
+              [23.4, 27],
+              [23.4, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 5.6,
+            "polygon": [
+              [54.6, 27],
+              [78, 27],
+              [78, 45],
+              [54.6, 45]
+            ]
+          },
+          {
+            "id": "balcony",
+            "label": "Balcony",
+            "area": 4.7,
+            "polygon": [
+              [54.6, 45],
+              [78, 45],
+              [78, 60],
+              [54.6, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-020",
+      "complex": "Northbay Park",
+      "district": "Green Quarter",
+      "rooms": 2,
+      "area": 62.8,
+      "floor": 4,
+      "totalFloors": 14,
+      "price": 154500,
+      "currency": "USD",
+      "pricePerM2": 2460,
+      "features": ["parking"],
+      "floorPlan": {
+        "width": 90,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 11.3,
+            "polygon": [
+              [31.5, 24],
+              [58.5, 24],
+              [58.5, 60],
+              [31.5, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 16.3,
+            "polygon": [
+              [0, 0],
+              [58.5, 0],
+              [58.5, 24],
+              [0, 24]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 12.1,
+            "polygon": [
+              [58.5, 0],
+              [90, 0],
+              [90, 33],
+              [58.5, 33]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 13.2,
+            "polygon": [
+              [0, 24],
+              [31.5, 24],
+              [31.5, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 9.9,
+            "polygon": [
+              [58.5, 33],
+              [90, 33],
+              [90, 60],
+              [58.5, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-021",
+      "complex": "Solara Heights",
+      "district": "Riverside",
+      "rooms": 2,
+      "area": 71.8,
+      "floor": 6,
+      "totalFloors": 22,
+      "price": 216500,
+      "currency": "USD",
+      "pricePerM2": 3015,
+      "features": ["river view"],
+      "floorPlan": {
+        "width": 78,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 15.8,
+            "polygon": [
+              [23.4, 27],
+              [54.6, 27],
+              [54.6, 60],
+              [23.4, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 17.8,
+            "polygon": [
+              [0, 0],
+              [42.9, 0],
+              [42.9, 27],
+              [0, 27]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 14.5,
+            "polygon": [
+              [42.9, 0],
+              [78, 0],
+              [78, 27],
+              [42.9, 27]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 11.8,
+            "polygon": [
+              [0, 27],
+              [23.4, 27],
+              [23.4, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 6.5,
+            "polygon": [
+              [54.6, 27],
+              [78, 27],
+              [78, 45],
+              [54.6, 45]
+            ]
+          },
+          {
+            "id": "balcony",
+            "label": "Balcony",
+            "area": 5.4,
+            "polygon": [
+              [54.6, 45],
+              [78, 45],
+              [78, 60],
+              [54.6, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-022",
+      "complex": "Northbay Park",
+      "district": "Green Quarter",
+      "rooms": 2,
+      "area": 70,
+      "floor": 2,
+      "totalFloors": 14,
+      "price": 163000,
+      "currency": "USD",
+      "pricePerM2": 2329,
+      "features": ["smart-home", "parking", "river view"],
+      "floorPlan": {
+        "width": 78,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 15.4,
+            "polygon": [
+              [23.4, 27],
+              [54.6, 27],
+              [54.6, 60],
+              [23.4, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 17.3,
+            "polygon": [
+              [0, 0],
+              [42.9, 0],
+              [42.9, 27],
+              [0, 27]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 14.2,
+            "polygon": [
+              [42.9, 0],
+              [78, 0],
+              [78, 27],
+              [42.9, 27]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 11.6,
+            "polygon": [
+              [0, 27],
+              [23.4, 27],
+              [23.4, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 6.3,
+            "polygon": [
+              [54.6, 27],
+              [78, 27],
+              [78, 45],
+              [54.6, 45]
+            ]
+          },
+          {
+            "id": "balcony",
+            "label": "Balcony",
+            "area": 5.3,
+            "polygon": [
+              [54.6, 45],
+              [78, 45],
+              [78, 60],
+              [54.6, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-023",
+      "complex": "Solara Heights",
+      "district": "Riverside",
+      "rooms": 3,
+      "area": 98.7,
+      "floor": 2,
+      "totalFloors": 22,
+      "price": 275000,
+      "currency": "USD",
+      "pricePerM2": 2786,
+      "features": ["storage"],
+      "floorPlan": {
+        "width": 96,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 13.6,
+            "polygon": [
+              [38.4, 27],
+              [62.4, 27],
+              [62.4, 60],
+              [38.4, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 23.7,
+            "polygon": [
+              [0, 0],
+              [38.4, 0],
+              [38.4, 36],
+              [0, 36]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 14.2,
+            "polygon": [
+              [38.4, 0],
+              [69.1, 0],
+              [69.1, 27],
+              [38.4, 27]
+            ]
+          },
+          {
+            "id": "bedroom2",
+            "label": "Bedroom 2",
+            "area": 12.4,
+            "polygon": [
+              [69.1, 0],
+              [96, 0],
+              [96, 27],
+              [69.1, 27]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 15.8,
+            "polygon": [
+              [0, 36],
+              [38.4, 36],
+              [38.4, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 10.4,
+            "polygon": [
+              [62.4, 27],
+              [96, 27],
+              [96, 45],
+              [62.4, 45]
+            ]
+          },
+          {
+            "id": "balcony",
+            "label": "Balcony",
+            "area": 8.6,
+            "polygon": [
+              [62.4, 45],
+              [96, 45],
+              [96, 60],
+              [62.4, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-024",
+      "complex": "Northbay Park",
+      "district": "Green Quarter",
+      "rooms": 3,
+      "area": 83.3,
+      "floor": 5,
+      "totalFloors": 14,
+      "price": 215500,
+      "currency": "USD",
+      "pricePerM2": 2587,
+      "features": ["storage"],
+      "floorPlan": {
+        "width": 96,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 11.5,
+            "polygon": [
+              [38.4, 27],
+              [62.4, 27],
+              [62.4, 60],
+              [38.4, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 20,
+            "polygon": [
+              [0, 0],
+              [38.4, 0],
+              [38.4, 36],
+              [0, 36]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 12,
+            "polygon": [
+              [38.4, 0],
+              [69.1, 0],
+              [69.1, 27],
+              [38.4, 27]
+            ]
+          },
+          {
+            "id": "bedroom2",
+            "label": "Bedroom 2",
+            "area": 10.5,
+            "polygon": [
+              [69.1, 0],
+              [96, 0],
+              [96, 27],
+              [69.1, 27]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 13.3,
+            "polygon": [
+              [0, 36],
+              [38.4, 36],
+              [38.4, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 8.7,
+            "polygon": [
+              [62.4, 27],
+              [96, 27],
+              [96, 45],
+              [62.4, 45]
+            ]
+          },
+          {
+            "id": "balcony",
+            "label": "Balcony",
+            "area": 7.3,
+            "polygon": [
+              [62.4, 45],
+              [96, 45],
+              [96, 60],
+              [62.4, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-025",
+      "complex": "Solara Heights",
+      "district": "Riverside",
+      "rooms": 3,
+      "area": 79,
+      "floor": 2,
+      "totalFloors": 22,
+      "price": 245500,
+      "currency": "USD",
+      "pricePerM2": 3108,
+      "features": ["river view"],
+      "floorPlan": {
+        "width": 108,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 15.8,
+            "polygon": [
+              [32.4, 30],
+              [75.6, 30],
+              [75.6, 60],
+              [32.4, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 13.8,
+            "polygon": [
+              [0, 0],
+              [37.8, 0],
+              [37.8, 30],
+              [0, 30]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 11.9,
+            "polygon": [
+              [0, 30],
+              [32.4, 30],
+              [32.4, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 13.8,
+            "polygon": [
+              [37.8, 0],
+              [75.6, 0],
+              [75.6, 30],
+              [37.8, 30]
+            ]
+          },
+          {
+            "id": "bedroom2",
+            "label": "Bedroom 2",
+            "area": 11.9,
+            "polygon": [
+              [75.6, 0],
+              [108, 0],
+              [108, 30],
+              [75.6, 30]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 11.9,
+            "polygon": [
+              [75.6, 30],
+              [108, 30],
+              [108, 60],
+              [75.6, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-026",
+      "complex": "Northbay Park",
+      "district": "Green Quarter",
+      "rooms": 3,
+      "area": 82.3,
+      "floor": 5,
+      "totalFloors": 14,
+      "price": 213000,
+      "currency": "USD",
+      "pricePerM2": 2588,
+      "features": ["storage", "river view"],
+      "floorPlan": {
+        "width": 96,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 11.3,
+            "polygon": [
+              [38.4, 27],
+              [62.4, 27],
+              [62.4, 60],
+              [38.4, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 19.8,
+            "polygon": [
+              [0, 0],
+              [38.4, 0],
+              [38.4, 36],
+              [0, 36]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 11.9,
+            "polygon": [
+              [38.4, 0],
+              [69.1, 0],
+              [69.1, 27],
+              [38.4, 27]
+            ]
+          },
+          {
+            "id": "bedroom2",
+            "label": "Bedroom 2",
+            "area": 10.4,
+            "polygon": [
+              [69.1, 0],
+              [96, 0],
+              [96, 27],
+              [69.1, 27]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 13.2,
+            "polygon": [
+              [0, 36],
+              [38.4, 36],
+              [38.4, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 8.6,
+            "polygon": [
+              [62.4, 27],
+              [96, 27],
+              [96, 45],
+              [62.4, 45]
+            ]
+          },
+          {
+            "id": "balcony",
+            "label": "Balcony",
+            "area": 7.2,
+            "polygon": [
+              [62.4, 45],
+              [96, 45],
+              [96, 60],
+              [62.4, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-027",
+      "complex": "Solara Heights",
+      "district": "Riverside",
+      "rooms": 3,
+      "area": 93.9,
+      "floor": 10,
+      "totalFloors": 22,
+      "price": 285000,
+      "currency": "USD",
+      "pricePerM2": 3035,
+      "features": ["river view", "park view"],
+      "floorPlan": {
+        "width": 96,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 12.9,
+            "polygon": [
+              [38.4, 27],
+              [62.4, 27],
+              [62.4, 60],
+              [38.4, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 22.5,
+            "polygon": [
+              [0, 0],
+              [38.4, 0],
+              [38.4, 36],
+              [0, 36]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 13.5,
+            "polygon": [
+              [38.4, 0],
+              [69.1, 0],
+              [69.1, 27],
+              [38.4, 27]
+            ]
+          },
+          {
+            "id": "bedroom2",
+            "label": "Bedroom 2",
+            "area": 11.8,
+            "polygon": [
+              [69.1, 0],
+              [96, 0],
+              [96, 27],
+              [69.1, 27]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 15,
+            "polygon": [
+              [0, 36],
+              [38.4, 36],
+              [38.4, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 9.9,
+            "polygon": [
+              [62.4, 27],
+              [96, 27],
+              [96, 45],
+              [62.4, 45]
+            ]
+          },
+          {
+            "id": "balcony",
+            "label": "Balcony",
+            "area": 8.2,
+            "polygon": [
+              [62.4, 45],
+              [96, 45],
+              [96, 60],
+              [62.4, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-028",
+      "complex": "Northbay Park",
+      "district": "Green Quarter",
+      "rooms": 3,
+      "area": 86.6,
+      "floor": 2,
+      "totalFloors": 14,
+      "price": 193000,
+      "currency": "USD",
+      "pricePerM2": 2229,
+      "features": ["smart-home", "park view"],
+      "floorPlan": {
+        "width": 108,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 17.3,
+            "polygon": [
+              [32.4, 30],
+              [75.6, 30],
+              [75.6, 60],
+              [32.4, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 15.2,
+            "polygon": [
+              [0, 0],
+              [37.8, 0],
+              [37.8, 30],
+              [0, 30]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 13,
+            "polygon": [
+              [0, 30],
+              [32.4, 30],
+              [32.4, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 15.2,
+            "polygon": [
+              [37.8, 0],
+              [75.6, 0],
+              [75.6, 30],
+              [37.8, 30]
+            ]
+          },
+          {
+            "id": "bedroom2",
+            "label": "Bedroom 2",
+            "area": 13,
+            "polygon": [
+              [75.6, 0],
+              [108, 0],
+              [108, 30],
+              [75.6, 30]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 13,
+            "polygon": [
+              [75.6, 30],
+              [108, 30],
+              [108, 60],
+              [75.6, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-029",
+      "complex": "Solara Heights",
+      "district": "Riverside",
+      "rooms": 3,
+      "area": 96.1,
+      "floor": 19,
+      "totalFloors": 22,
+      "price": 299500,
+      "currency": "USD",
+      "pricePerM2": 3117,
+      "features": ["storage", "balcony"],
+      "floorPlan": {
+        "width": 96,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 13.2,
+            "polygon": [
+              [38.4, 27],
+              [62.4, 27],
+              [62.4, 60],
+              [38.4, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 23.1,
+            "polygon": [
+              [0, 0],
+              [38.4, 0],
+              [38.4, 36],
+              [0, 36]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 13.8,
+            "polygon": [
+              [38.4, 0],
+              [69.1, 0],
+              [69.1, 27],
+              [38.4, 27]
+            ]
+          },
+          {
+            "id": "bedroom2",
+            "label": "Bedroom 2",
+            "area": 12.1,
+            "polygon": [
+              [69.1, 0],
+              [96, 0],
+              [96, 27],
+              [69.1, 27]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 15.4,
+            "polygon": [
+              [0, 36],
+              [38.4, 36],
+              [38.4, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 10.1,
+            "polygon": [
+              [62.4, 27],
+              [96, 27],
+              [96, 45],
+              [62.4, 45]
+            ]
+          },
+          {
+            "id": "balcony",
+            "label": "Balcony",
+            "area": 8.4,
+            "polygon": [
+              [62.4, 45],
+              [96, 45],
+              [96, 60],
+              [62.4, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-030",
+      "complex": "Northbay Park",
+      "district": "Green Quarter",
+      "rooms": 3,
+      "area": 88.4,
+      "floor": 9,
+      "totalFloors": 14,
+      "price": 224500,
+      "currency": "USD",
+      "pricePerM2": 2540,
+      "features": ["smart-home", "balcony", "river view"],
+      "floorPlan": {
+        "width": 108,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 17.7,
+            "polygon": [
+              [32.4, 30],
+              [75.6, 30],
+              [75.6, 60],
+              [32.4, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 15.5,
+            "polygon": [
+              [0, 0],
+              [37.8, 0],
+              [37.8, 30],
+              [0, 30]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 13.3,
+            "polygon": [
+              [0, 30],
+              [32.4, 30],
+              [32.4, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 15.5,
+            "polygon": [
+              [37.8, 0],
+              [75.6, 0],
+              [75.6, 30],
+              [37.8, 30]
+            ]
+          },
+          {
+            "id": "bedroom2",
+            "label": "Bedroom 2",
+            "area": 13.3,
+            "polygon": [
+              [75.6, 0],
+              [108, 0],
+              [108, 30],
+              [75.6, 30]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 13.3,
+            "polygon": [
+              [75.6, 30],
+              [108, 30],
+              [108, 60],
+              [75.6, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-031",
+      "complex": "Solara Heights",
+      "district": "Riverside",
+      "rooms": 3,
+      "area": 90.4,
+      "floor": 5,
+      "totalFloors": 22,
+      "price": 258000,
+      "currency": "USD",
+      "pricePerM2": 2854,
+      "features": ["parking"],
+      "floorPlan": {
+        "width": 96,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 12.4,
+            "polygon": [
+              [38.4, 27],
+              [62.4, 27],
+              [62.4, 60],
+              [38.4, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 21.7,
+            "polygon": [
+              [0, 0],
+              [38.4, 0],
+              [38.4, 36],
+              [0, 36]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 13,
+            "polygon": [
+              [38.4, 0],
+              [69.1, 0],
+              [69.1, 27],
+              [38.4, 27]
+            ]
+          },
+          {
+            "id": "bedroom2",
+            "label": "Bedroom 2",
+            "area": 11.4,
+            "polygon": [
+              [69.1, 0],
+              [96, 0],
+              [96, 27],
+              [69.1, 27]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 14.5,
+            "polygon": [
+              [0, 36],
+              [38.4, 36],
+              [38.4, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 9.5,
+            "polygon": [
+              [62.4, 27],
+              [96, 27],
+              [96, 45],
+              [62.4, 45]
+            ]
+          },
+          {
+            "id": "balcony",
+            "label": "Balcony",
+            "area": 7.9,
+            "polygon": [
+              [62.4, 45],
+              [96, 45],
+              [96, 60],
+              [62.4, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-032",
+      "complex": "Northbay Park",
+      "district": "Green Quarter",
+      "rooms": 3,
+      "area": 93.5,
+      "floor": 3,
+      "totalFloors": 14,
+      "price": 209500,
+      "currency": "USD",
+      "pricePerM2": 2241,
+      "features": ["parking"],
+      "floorPlan": {
+        "width": 108,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 18.7,
+            "polygon": [
+              [32.4, 30],
+              [75.6, 30],
+              [75.6, 60],
+              [32.4, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 16.4,
+            "polygon": [
+              [0, 0],
+              [37.8, 0],
+              [37.8, 30],
+              [0, 30]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 14,
+            "polygon": [
+              [0, 30],
+              [32.4, 30],
+              [32.4, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 16.4,
+            "polygon": [
+              [37.8, 0],
+              [75.6, 0],
+              [75.6, 30],
+              [37.8, 30]
+            ]
+          },
+          {
+            "id": "bedroom2",
+            "label": "Bedroom 2",
+            "area": 14,
+            "polygon": [
+              [75.6, 0],
+              [108, 0],
+              [108, 30],
+              [75.6, 30]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 14,
+            "polygon": [
+              [75.6, 30],
+              [108, 30],
+              [108, 60],
+              [75.6, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-033",
+      "complex": "Solara Heights",
+      "district": "Riverside",
+      "rooms": 3,
+      "area": 78.1,
+      "floor": 18,
+      "totalFloors": 22,
+      "price": 216500,
+      "currency": "USD",
+      "pricePerM2": 2772,
+      "features": ["storage", "river view"],
+      "floorPlan": {
+        "width": 108,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 15.6,
+            "polygon": [
+              [32.4, 30],
+              [75.6, 30],
+              [75.6, 60],
+              [32.4, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 13.7,
+            "polygon": [
+              [0, 0],
+              [37.8, 0],
+              [37.8, 30],
+              [0, 30]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 11.7,
+            "polygon": [
+              [0, 30],
+              [32.4, 30],
+              [32.4, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 13.7,
+            "polygon": [
+              [37.8, 0],
+              [75.6, 0],
+              [75.6, 30],
+              [37.8, 30]
+            ]
+          },
+          {
+            "id": "bedroom2",
+            "label": "Bedroom 2",
+            "area": 11.7,
+            "polygon": [
+              [75.6, 0],
+              [108, 0],
+              [108, 30],
+              [75.6, 30]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 11.7,
+            "polygon": [
+              [75.6, 30],
+              [108, 30],
+              [108, 60],
+              [75.6, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-034",
+      "complex": "Northbay Park",
+      "district": "Green Quarter",
+      "rooms": 3,
+      "area": 86.4,
+      "floor": 11,
+      "totalFloors": 14,
+      "price": 217000,
+      "currency": "USD",
+      "pricePerM2": 2512,
+      "features": ["balcony"],
+      "floorPlan": {
+        "width": 108,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 17.3,
+            "polygon": [
+              [32.4, 30],
+              [75.6, 30],
+              [75.6, 60],
+              [32.4, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 15.1,
+            "polygon": [
+              [0, 0],
+              [37.8, 0],
+              [37.8, 30],
+              [0, 30]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 13,
+            "polygon": [
+              [0, 30],
+              [32.4, 30],
+              [32.4, 60],
+              [0, 60]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 15.1,
+            "polygon": [
+              [37.8, 0],
+              [75.6, 0],
+              [75.6, 30],
+              [37.8, 30]
+            ]
+          },
+          {
+            "id": "bedroom2",
+            "label": "Bedroom 2",
+            "area": 13,
+            "polygon": [
+              [75.6, 0],
+              [108, 0],
+              [108, 30],
+              [75.6, 30]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 13,
+            "polygon": [
+              [75.6, 30],
+              [108, 30],
+              [108, 60],
+              [75.6, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-035",
+      "complex": "Solara Heights",
+      "district": "Riverside",
+      "rooms": 4,
+      "area": 106.1,
+      "floor": 12,
+      "totalFloors": 22,
+      "price": 305000,
+      "currency": "USD",
+      "pricePerM2": 2875,
+      "features": ["river view", "storage", "balcony"],
+      "floorPlan": {
+        "width": 102,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 9.5,
+            "polygon": [
+              [35.7, 27],
+              [66.3, 27],
+              [66.3, 45],
+              [35.7, 45]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 8,
+            "polygon": [
+              [35.7, 45],
+              [66.3, 45],
+              [66.3, 60],
+              [35.7, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 24.1,
+            "polygon": [
+              [0, 0],
+              [35.7, 0],
+              [35.7, 39],
+              [0, 39]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 15.8,
+            "polygon": [
+              [35.7, 0],
+              [69.4, 0],
+              [69.4, 27],
+              [35.7, 27]
+            ]
+          },
+          {
+            "id": "bedroom2",
+            "label": "Bedroom 2",
+            "area": 15.3,
+            "polygon": [
+              [69.4, 0],
+              [102, 0],
+              [102, 27],
+              [69.4, 27]
+            ]
+          },
+          {
+            "id": "bedroom3",
+            "label": "Bedroom 3",
+            "area": 20.4,
+            "polygon": [
+              [66.3, 27],
+              [102, 27],
+              [102, 60],
+              [66.3, 60]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 13,
+            "polygon": [
+              [0, 39],
+              [35.7, 39],
+              [35.7, 60],
+              [0, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-036",
+      "complex": "Northbay Park",
+      "district": "Green Quarter",
+      "rooms": 4,
+      "area": 113.3,
+      "floor": 10,
+      "totalFloors": 14,
+      "price": 273000,
+      "currency": "USD",
+      "pricePerM2": 2410,
+      "features": ["park view", "storage"],
+      "floorPlan": {
+        "width": 102,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 10.2,
+            "polygon": [
+              [35.7, 27],
+              [66.3, 27],
+              [66.3, 45],
+              [35.7, 45]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 8.5,
+            "polygon": [
+              [35.7, 45],
+              [66.3, 45],
+              [66.3, 60],
+              [35.7, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 25.8,
+            "polygon": [
+              [0, 0],
+              [35.7, 0],
+              [35.7, 39],
+              [0, 39]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 16.8,
+            "polygon": [
+              [35.7, 0],
+              [69.4, 0],
+              [69.4, 27],
+              [35.7, 27]
+            ]
+          },
+          {
+            "id": "bedroom2",
+            "label": "Bedroom 2",
+            "area": 16.3,
+            "polygon": [
+              [69.4, 0],
+              [102, 0],
+              [102, 27],
+              [69.4, 27]
+            ]
+          },
+          {
+            "id": "bedroom3",
+            "label": "Bedroom 3",
+            "area": 21.8,
+            "polygon": [
+              [66.3, 27],
+              [102, 27],
+              [102, 60],
+              [66.3, 60]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 13.9,
+            "polygon": [
+              [0, 39],
+              [35.7, 39],
+              [35.7, 60],
+              [0, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-037",
+      "complex": "Solara Heights",
+      "district": "Riverside",
+      "rooms": 4,
+      "area": 131.4,
+      "floor": 15,
+      "totalFloors": 22,
+      "price": 363000,
+      "currency": "USD",
+      "pricePerM2": 2763,
+      "features": ["smart-home", "river view", "parking"],
+      "floorPlan": {
+        "width": 102,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 11.8,
+            "polygon": [
+              [35.7, 27],
+              [66.3, 27],
+              [66.3, 45],
+              [35.7, 45]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 9.9,
+            "polygon": [
+              [35.7, 45],
+              [66.3, 45],
+              [66.3, 60],
+              [35.7, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 29.9,
+            "polygon": [
+              [0, 0],
+              [35.7, 0],
+              [35.7, 39],
+              [0, 39]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 19.5,
+            "polygon": [
+              [35.7, 0],
+              [69.4, 0],
+              [69.4, 27],
+              [35.7, 27]
+            ]
+          },
+          {
+            "id": "bedroom2",
+            "label": "Bedroom 2",
+            "area": 18.9,
+            "polygon": [
+              [69.4, 0],
+              [102, 0],
+              [102, 27],
+              [69.4, 27]
+            ]
+          },
+          {
+            "id": "bedroom3",
+            "label": "Bedroom 3",
+            "area": 25.3,
+            "polygon": [
+              [66.3, 27],
+              [102, 27],
+              [102, 60],
+              [66.3, 60]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 16.1,
+            "polygon": [
+              [0, 39],
+              [35.7, 39],
+              [35.7, 60],
+              [0, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-038",
+      "complex": "Northbay Park",
+      "district": "Green Quarter",
+      "rooms": 4,
+      "area": 122.4,
+      "floor": 13,
+      "totalFloors": 14,
+      "price": 312500,
+      "currency": "USD",
+      "pricePerM2": 2553,
+      "features": ["smart-home"],
+      "floorPlan": {
+        "width": 102,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 11,
+            "polygon": [
+              [35.7, 27],
+              [66.3, 27],
+              [66.3, 45],
+              [35.7, 45]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 9.2,
+            "polygon": [
+              [35.7, 45],
+              [66.3, 45],
+              [66.3, 60],
+              [35.7, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 27.8,
+            "polygon": [
+              [0, 0],
+              [35.7, 0],
+              [35.7, 39],
+              [0, 39]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 18.2,
+            "polygon": [
+              [35.7, 0],
+              [69.4, 0],
+              [69.4, 27],
+              [35.7, 27]
+            ]
+          },
+          {
+            "id": "bedroom2",
+            "label": "Bedroom 2",
+            "area": 17.6,
+            "polygon": [
+              [69.4, 0],
+              [102, 0],
+              [102, 27],
+              [69.4, 27]
+            ]
+          },
+          {
+            "id": "bedroom3",
+            "label": "Bedroom 3",
+            "area": 23.6,
+            "polygon": [
+              [66.3, 27],
+              [102, 27],
+              [102, 60],
+              [66.3, 60]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 15,
+            "polygon": [
+              [0, 39],
+              [35.7, 39],
+              [35.7, 60],
+              [0, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-039",
+      "complex": "Solara Heights",
+      "district": "Riverside",
+      "rooms": 4,
+      "area": 114,
+      "floor": 5,
+      "totalFloors": 22,
+      "price": 327500,
+      "currency": "USD",
+      "pricePerM2": 2873,
+      "features": ["parking"],
+      "floorPlan": {
+        "width": 102,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 10.3,
+            "polygon": [
+              [35.7, 27],
+              [66.3, 27],
+              [66.3, 45],
+              [35.7, 45]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 8.5,
+            "polygon": [
+              [35.7, 45],
+              [66.3, 45],
+              [66.3, 60],
+              [35.7, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 25.9,
+            "polygon": [
+              [0, 0],
+              [35.7, 0],
+              [35.7, 39],
+              [0, 39]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 16.9,
+            "polygon": [
+              [35.7, 0],
+              [69.4, 0],
+              [69.4, 27],
+              [35.7, 27]
+            ]
+          },
+          {
+            "id": "bedroom2",
+            "label": "Bedroom 2",
+            "area": 16.4,
+            "polygon": [
+              [69.4, 0],
+              [102, 0],
+              [102, 27],
+              [69.4, 27]
+            ]
+          },
+          {
+            "id": "bedroom3",
+            "label": "Bedroom 3",
+            "area": 21.9,
+            "polygon": [
+              [66.3, 27],
+              [102, 27],
+              [102, 60],
+              [66.3, 60]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 14,
+            "polygon": [
+              [0, 39],
+              [35.7, 39],
+              [35.7, 60],
+              [0, 60]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "apt-040",
+      "complex": "Northbay Park",
+      "district": "Green Quarter",
+      "rooms": 4,
+      "area": 122.3,
+      "floor": 4,
+      "totalFloors": 14,
+      "price": 295000,
+      "currency": "USD",
+      "pricePerM2": 2412,
+      "features": ["balcony", "smart-home"],
+      "floorPlan": {
+        "width": 102,
+        "height": 60,
+        "rooms": [
+          {
+            "id": "hall",
+            "label": "Hall",
+            "area": 11,
+            "polygon": [
+              [35.7, 27],
+              [66.3, 27],
+              [66.3, 45],
+              [35.7, 45]
+            ]
+          },
+          {
+            "id": "bathroom",
+            "label": "Bathroom",
+            "area": 9.2,
+            "polygon": [
+              [35.7, 45],
+              [66.3, 45],
+              [66.3, 60],
+              [35.7, 60]
+            ]
+          },
+          {
+            "id": "living",
+            "label": "Living room",
+            "area": 27.8,
+            "polygon": [
+              [0, 0],
+              [35.7, 0],
+              [35.7, 39],
+              [0, 39]
+            ]
+          },
+          {
+            "id": "bedroom",
+            "label": "Bedroom",
+            "area": 18.2,
+            "polygon": [
+              [35.7, 0],
+              [69.4, 0],
+              [69.4, 27],
+              [35.7, 27]
+            ]
+          },
+          {
+            "id": "bedroom2",
+            "label": "Bedroom 2",
+            "area": 17.6,
+            "polygon": [
+              [69.4, 0],
+              [102, 0],
+              [102, 27],
+              [69.4, 27]
+            ]
+          },
+          {
+            "id": "bedroom3",
+            "label": "Bedroom 3",
+            "area": 23.5,
+            "polygon": [
+              [66.3, 27],
+              [102, 27],
+              [102, 60],
+              [66.3, 60]
+            ]
+          },
+          {
+            "id": "kitchen",
+            "label": "Kitchen",
+            "area": 15,
+            "polygon": [
+              [0, 39],
+              [35.7, 39],
+              [35.7, 60],
+              [0, 60]
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

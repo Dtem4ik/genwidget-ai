@@ -1,7 +1,11 @@
 "use client";
 
 import { useChat } from "@ai-sdk/react";
+import { isStaticToolUIPart } from "ai";
 import { MessageSquareIcon, RefreshCwIcon } from "lucide-react";
+
+import type { ChatUIMessage } from "@/lib/ai/tools";
+import { ToolWidget } from "@/components/widgets/registry";
 
 import {
   Conversation,
@@ -22,7 +26,7 @@ import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 
 export function Chat() {
-  const { messages, sendMessage, status, error, regenerate, stop } = useChat();
+  const { messages, sendMessage, status, error, regenerate, stop } = useChat<ChatUIMessage>();
 
   const handleSubmit = (message: PromptInputMessage) => {
     const text = message.text.trim();
@@ -46,17 +50,21 @@ export function Chat() {
           {messages.map((message) => (
             <Message from={message.role} key={message.id}>
               <MessageContent>
-                {message.parts
-                  .filter((part) => part.type === "text")
-                  .map((part, i) =>
-                    message.role === "assistant" ? (
+                {message.parts.map((part, i) => {
+                  if (part.type === "text") {
+                    return message.role === "assistant" ? (
                       <MessageResponse key={`${message.id}-${i}`}>{part.text}</MessageResponse>
                     ) : (
                       <span className="whitespace-pre-wrap" key={`${message.id}-${i}`}>
                         {part.text}
                       </span>
-                    ),
-                  )}
+                    );
+                  }
+                  if (isStaticToolUIPart(part)) {
+                    return <ToolWidget key={part.toolCallId} part={part} />;
+                  }
+                  return null;
+                })}
               </MessageContent>
             </Message>
           ))}

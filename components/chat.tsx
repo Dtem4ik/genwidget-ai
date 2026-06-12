@@ -9,7 +9,7 @@ import {
   ConversationEmptyState,
   ConversationScrollButton,
 } from "@/components/ai-elements/conversation";
-import { Message, MessageContent } from "@/components/ai-elements/message";
+import { Message, MessageContent, MessageResponse } from "@/components/ai-elements/message";
 import {
   PromptInput,
   PromptInputBody,
@@ -48,11 +48,15 @@ export function Chat() {
               <MessageContent>
                 {message.parts
                   .filter((part) => part.type === "text")
-                  .map((part, i) => (
-                    <span className="whitespace-pre-wrap" key={`${message.id}-${i}`}>
-                      {part.text}
-                    </span>
-                  ))}
+                  .map((part, i) =>
+                    message.role === "assistant" ? (
+                      <MessageResponse key={`${message.id}-${i}`}>{part.text}</MessageResponse>
+                    ) : (
+                      <span className="whitespace-pre-wrap" key={`${message.id}-${i}`}>
+                        {part.text}
+                      </span>
+                    ),
+                  )}
               </MessageContent>
             </Message>
           ))}

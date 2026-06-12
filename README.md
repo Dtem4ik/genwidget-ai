@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Widgetloom
 
-## Getting Started
+> AI chat that answers with live React widgets instead of text — floor plans, product
+> comparisons, stocks, weather. An extensible generative UI platform built on streaming
+> tool-calls. Works with any LLM provider.
 
-First, run the development server:
+[![CI](https://github.com/Dtem4ik/widgetloom/actions/workflows/ci.yml/badge.svg)](https://github.com/Dtem4ik/widgetloom/actions/workflows/ci.yml)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue)](tsconfig.json)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+**Live demo:** [pet1.dtem4ik.dev](https://pet1.dtem4ik.dev)
+
+<!-- TODO(phase 8): hero GIF — apartment cards streaming in with floor plans -->
+
+## What it does
+
+Ask in plain language — get an interactive widget, streamed in as the model generates it:
+
+- "2-bedroom under $200k" → apartment cards with hoverable SVG floor plans
+- "compare these two phones" → side-by-side table with advantage highlighting
+- "weather in Tel Aviv" → live weather card (Open-Meteo)
+- "how is NVDA doing" → price + sparkline
+
+Widgets are skeleton-first: fields fill in as partial JSON arrives, and once the stream
+completes they are fully interactive React components whose buttons send follow-up
+messages back to the model.
+
+## Stack
+
+Next.js (App Router) · TypeScript strict · Vercel AI SDK · zod · Tailwind + shadcn/ui ·
+Vitest + Playwright · GitHub Actions · Vercel
+
+## Architecture
+
+```
+user message → /api/chat (streamText + tools) → LLM picks a tool (zod schema)
+            → partial tool-call args stream to the client (useChat)
+            → widget registry maps toolName → React component
+            → skeleton → fields fill in → fully interactive widget
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Each widget is a self-contained pack — `widgets/<name>/{schema, tool, component,
+skeleton, test, fixtures}` — and adding a new domain is a documented 30-minute task
+(`docs/adding-a-widget.md`).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Data sources
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Live free APIs where they exist (weather, stocks); realistic mock JSON catalogs where
+real APIs are paid (apartments, phones, laptops). Mocked catalogs are honestly labeled.
 
-## Learn More
+## Development
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+pnpm install
+pnpm dev        # dev server
+pnpm lint       # eslint
+pnpm typecheck  # tsc --noEmit
+pnpm build      # production build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Status
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🚧 Phase 0 — scaffold. Chat core, then widgets, land phase by phase; the commit
+history reads as the build log.

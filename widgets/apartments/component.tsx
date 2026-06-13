@@ -1,7 +1,6 @@
-import { LayoutTemplateIcon } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
 
+import { FloorPlan } from "./floor-plan";
 import { ListingPhoto } from "./listing-photo";
 import type { ApartmentItem, ShowApartmentsInput, ShowApartmentsOutput } from "./schema";
 
@@ -30,11 +29,7 @@ export function ApartmentCard({
         {roomsLabel(apartment.rooms)} · {apartment.area} m² · floor {apartment.floor}/
         {apartment.totalFloors}
       </p>
-      {/* Floor plan slot — image renderer lands in C3 of this phase */}
-      <div className="text-muted-foreground/70 flex aspect-[8/3] items-center justify-center gap-2 rounded-lg border border-dashed text-xs">
-        <LayoutTemplateIcon className="size-4" />
-        Floor plan
-      </div>
+      <FloorPlan rooms={apartment.rooms} />
       {apartment.features.length > 0 && (
         <ul className="flex flex-wrap gap-1.5">
           {apartment.features.map((feature) => (

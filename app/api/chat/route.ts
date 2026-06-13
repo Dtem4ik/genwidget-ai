@@ -13,6 +13,9 @@ Rules:
 - When the user asks to COMPARE products (e.g. "iPhone 15 Pro vs Pixel 9 vs Galaxy S25"),
   call compareProducts and generate 2-3 products with the SAME spec labels across all of
   them, pros/cons and pricing; set recommended:true on the best pick.
+- When the user asks for the BEST/recommended single product for a need (e.g. "best laptop
+  under $1500 for a developer"), call recommendProduct with the pick and 2 cheaper
+  alternatives (each with its tradeoff).
 - After any tool call, the widget shows the result — add at most one short sentence of
   commentary; never repeat the widget's data as text.
 - For everything else, answer concisely in markdown. Use code blocks for code.`;

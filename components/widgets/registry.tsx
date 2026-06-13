@@ -9,6 +9,8 @@ import { ApartmentResults } from "@/widgets/apartments/component";
 import { ApartmentResultsSkeleton } from "@/widgets/apartments/skeleton";
 import { CompareTable } from "@/widgets/compare/CompareTable";
 import { CompareTableSkeleton } from "@/widgets/compare/skeleton";
+import { ProductRecommendation } from "@/widgets/recommend/ProductRecommendation";
+import { ProductRecommendationSkeleton } from "@/widgets/recommend/skeleton";
 
 /**
  * A widget pack binds one tool to its UI:
@@ -35,6 +37,10 @@ const registry: Registry = {
   compareProducts: {
     Component: CompareTable,
     Skeleton: CompareTableSkeleton,
+  },
+  recommendProduct: {
+    Component: ProductRecommendation,
+    Skeleton: ProductRecommendationSkeleton,
   },
 };
 

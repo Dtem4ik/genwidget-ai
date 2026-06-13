@@ -1,0 +1,33 @@
+{
+  "question": "iPhone 15 Pro vs Pixel 9 vs Galaxy S25",
+  "products": [
+    {
+      "name": "iPhone 15 Pro",
+      "category": "phone",
+      "price": 999,
+      "specs": [
+        { "label": "Display", "value": "6.1\" OLED" },
+        { "label": "Processor", "value": "A17 Pro" },
+        { "label": "Battery", "value": "3274 mAh" }
+      ],
+      "pros": ["Premium build", "Top performance"],
+      "cons": ["Battery life"],
+      "imageQuery": "iphone 15 pro",
+      "recommended": false
+    },
+    {
+      "name": "Pixel 9",
+      "category": "phone",
+      "price": 799,
+      "specs": [
+        { "label": "Display", "value": "6.3\" OLED" },
+        { "label": "Processor", "value": "Tensor G4" },
+        { "label": "Battery", "value": "4700 mAh" }
+      ],
+      "pros": ["Best value", "Clean software"],
+      "cons": ["Slower chip"],
+      "imageQuery": "google pixel 9",
+      "recommended": true
+    }
+  ]
+}

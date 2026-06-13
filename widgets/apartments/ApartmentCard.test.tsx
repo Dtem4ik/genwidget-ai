@@ -3,7 +3,6 @@ import { describe, expect, it } from "vitest";
 
 import { ApartmentCard } from "./component";
 import { floorPlanByRooms } from "./floor-plan";
-import { photoUrl } from "./listing-photo";
 import type { ApartmentItem } from "./schema";
 import { ApartmentResultsSkeleton } from "./skeleton";
 
@@ -19,18 +18,19 @@ const apartment: ApartmentItem = {
   imageQuery: "modern 2 bedroom apartment tel aviv interior",
 };
 
-describe("ApartmentCard photo", () => {
-  it("renders an img whose src is the keyless photo URL for this card", () => {
-    render(<ApartmentCard apartment={apartment} index={0} />);
-    const img = screen.getByRole("img", { name: apartment.title });
-    expect(img).toHaveAttribute("src", photoUrl(apartment.imageQuery, 1));
-    expect(img.getAttribute("src")).toContain("loremflickr.com");
+describe("ApartmentCard visual", () => {
+  it("renders a gradient+icon domain card (no external photo) labelled by title", () => {
+    render(<ApartmentCard apartment={apartment} />);
+    const card = screen.getByRole("img", { name: apartment.title });
+    // No fake stock photos — it's a div, not an <img> with an external src.
+    expect(card.tagName).not.toBe("IMG");
+    expect(card.querySelector("svg")).toBeInTheDocument();
   });
 });
 
 describe("ApartmentCard floor plan toggle", () => {
   it("is hidden by default and reveals the floor plan image on click", () => {
-    render(<ApartmentCard apartment={apartment} index={0} />);
+    render(<ApartmentCard apartment={apartment} />);
 
     expect(screen.queryByRole("img", { name: /floor plan/i })).not.toBeInTheDocument();
 

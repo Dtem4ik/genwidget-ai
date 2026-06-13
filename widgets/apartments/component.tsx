@@ -1,27 +1,22 @@
 "use client";
 
+import { Home } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 
+import { DomainCard } from "@/components/widgets/domain-card";
 import { Button } from "@/components/ui/button";
 
 import { FloorPlan } from "./floor-plan";
-import { ListingPhoto } from "./listing-photo";
 import type { ApartmentItem, ShowApartmentsInput, ShowApartmentsOutput } from "./schema";
 
 export const formatPrice = (price: number) => `$${price.toLocaleString("en-US")}`;
 
 export const roomsLabel = (rooms: number) => (rooms === 0 ? "Studio" : `${rooms}-room`);
 
-export function ApartmentCard({
-  apartment,
-  index = 0,
-}: {
-  apartment: ApartmentItem;
-  index?: number;
-}) {
+export function ApartmentCard({ apartment }: { apartment: ApartmentItem }) {
   return (
     <article className="bg-card flex flex-col gap-3 rounded-xl border p-4">
-      <ListingPhoto alt={apartment.title} lock={index + 1} query={apartment.imageQuery} />
+      <DomainCard icon={Home} label={apartment.title} />
       <div className="flex flex-col gap-0.5">
         <div className="flex items-baseline justify-between gap-2">
           <h3 className="font-medium">{apartment.title}</h3>
@@ -79,7 +74,7 @@ export function ApartmentResults({
       <div className="grid gap-3 sm:grid-cols-2">
         {apartments.map((apartment, i) => {
           const key = `${apartment.title}-${i}`;
-          const card = <ApartmentCard apartment={apartment} index={i} />;
+          const card = <ApartmentCard apartment={apartment} />;
           // Staggered entrance as cards mount (output-available). Skipped entirely
           // when the user prefers reduced motion.
           return reduceMotion ? (

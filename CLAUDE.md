@@ -25,11 +25,21 @@ stocks) instead of text. Demo at pet1.dtem4ik.dev.
 self-contained module:
 `widgets/<name>/{schema.ts, tool.ts, component.tsx, skeleton.tsx, *.test.tsx, fixtures.json}`.
 
+Tools wired today: `showApartments`, `compareProducts`, `recommendProduct`.
+
 **Data pattern (ADR-003): the LLM generates content as the tool-call arguments;
 `execute()` is a zod-validated passthrough that returns the args.** No mock catalogs,
 no external content API. Live external APIs are reserved for genuinely real-time data
-(weather, stocks — later phases). Widget photos use a keyless image host built from an
-LLM-provided `imageQuery` field.
+(weather, stocks — later phases).
+
+**No stock photos (ADR-004):** the image slot is a shared `DomainCard` — a theme
+gradient + Lucide icon (`iconForCategory`). `imageQuery` stays on schemas for alt text.
+
+**Spec maps:** use an array of `{label, value}`, NOT `z.record()` — Gemini
+function-calling rejects JSON-schema `additionalProperties` (400).
+
+**Widget → chat loop:** `WidgetActionsProvider` (in `chat.tsx`) exposes `useWidgetActions().ask(text)`
+so widget buttons can send follow-up turns.
 
 Models are free-tier only (default `gemini-3.1-flash-lite`; → Groq → OpenRouter free);
 switching providers is a one-line change in `lib/ai/provider.ts`. See `docs/models.md`.
@@ -52,5 +62,7 @@ collapsible floor plans, staggered entrance animation.
 
 ## Status
 
-Phases 0–3 done and on prod (pet1.dtem4ik.dev). Apartments widget: LLM-generated
-listings with photos and floor plans. Next: phase 4 (compare + recommend widgets).
+Phases 0–4 done and on prod (pet1.dtem4ik.dev). Live widgets: ApartmentResults,
+CompareTable, ProductRecommendation — all LLM-generated, gradient+icon cards, widget
+buttons loop back into the chat. Next: phase 5 (WeatherCard + StockCard live APIs,
+FilterChips).

@@ -1,3 +1,7 @@
+"use client";
+
+import { motion, useReducedMotion } from "motion/react";
+
 import { Button } from "@/components/ui/button";
 
 import { FloorPlan } from "./floor-plan";
@@ -63,6 +67,7 @@ export function ApartmentResults({
 }) {
   const { apartments } = output;
   const count = apartments.length;
+  const reduceMotion = useReducedMotion();
 
   return (
     <section className="flex w-full flex-col gap-3" data-testid="apartments-results">
@@ -72,9 +77,24 @@ export function ApartmentResults({
         </span>
       </header>
       <div className="grid gap-3 sm:grid-cols-2">
-        {apartments.map((apartment, i) => (
-          <ApartmentCard apartment={apartment} index={i} key={`${apartment.title}-${i}`} />
-        ))}
+        {apartments.map((apartment, i) => {
+          const key = `${apartment.title}-${i}`;
+          const card = <ApartmentCard apartment={apartment} index={i} />;
+          // Staggered entrance as cards mount (output-available). Skipped entirely
+          // when the user prefers reduced motion.
+          return reduceMotion ? (
+            <div key={key}>{card}</div>
+          ) : (
+            <motion.div
+              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 16 }}
+              key={key}
+              transition={{ duration: 0.3, delay: i * 0.08, ease: "easeOut" }}
+            >
+              {card}
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );

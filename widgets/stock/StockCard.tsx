@@ -63,9 +63,23 @@ export function StockCard({
   const up = output.change24h >= 0;
   const TrendIcon = up ? TrendingUpIcon : TrendingDownIcon;
 
+  const changePill = (
+    <span
+      className={cn(
+        "w-fit rounded-full px-2 py-0.5 text-xs font-medium tabular-nums",
+        up
+          ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400"
+          : "bg-red-500/15 text-red-600 dark:text-red-400",
+      )}
+    >
+      {up ? "+" : ""}
+      {output.changePercent.toFixed(2)}% 24h
+    </span>
+  );
+
   return (
     <section
-      className="bg-card flex w-full max-w-sm flex-col gap-3 rounded-xl border p-4"
+      className="bg-card flex w-full flex-col gap-4 rounded-xl border p-4 sm:p-5"
       data-testid="stock-results"
     >
       <div className="flex items-center gap-3">
@@ -78,27 +92,21 @@ export function StockCard({
           <TrendIcon className="size-6" />
         </div>
         <div>
-          <p className="font-medium">{output.name}</p>
+          <p className="text-[15px] font-medium">{output.name}</p>
           <p className="text-muted-foreground text-xs uppercase">{output.symbol}</p>
         </div>
       </div>
 
-      <div className="flex items-baseline gap-2">
-        <span className="text-2xl font-semibold tabular-nums">{formatPrice(output.price)}</span>
-        <span
-          className={cn(
-            "rounded-full px-2 py-0.5 text-xs font-medium tabular-nums",
-            up
-              ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400"
-              : "bg-red-500/15 text-red-600 dark:text-red-400",
-          )}
-        >
-          {up ? "+" : ""}
-          {output.changePercent.toFixed(2)}% 24h
-        </span>
+      {/* Price on the left, sparkline filling the rest. Stacks on mobile. */}
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
+        <div className="flex flex-col gap-1 sm:w-2/5">
+          <span className="text-2xl font-semibold tabular-nums">{formatPrice(output.price)}</span>
+          {changePill}
+        </div>
+        <div className="flex-1">
+          <Sparkline up={up} values={output.sparkline} />
+        </div>
       </div>
-
-      <Sparkline up={up} values={output.sparkline} />
 
       <p className="text-muted-foreground/70 text-[10px]">
         Source: {output.source === "crypto" ? "CoinGecko" : "Yahoo Finance"} · 7-day trend

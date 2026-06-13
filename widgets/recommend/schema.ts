@@ -12,6 +12,9 @@ const alternativeSchema = z.object({
   tradeoff: z.string().describe("One line: what you give up vs the main pick"),
 });
 
+// alternatives is a TOP-LEVEL sibling of product (not nested) and optional. flash-lite
+// tends to emit it at the top level and sometimes omits it; nesting + min(1) made
+// validation hard-fail and the widget error out. Flatter + optional is reliable.
 export const recommendProductInput = z.object({
   userNeed: z.string().describe("The user's need, restated briefly"),
   product: z.object({
@@ -21,12 +24,12 @@ export const recommendProductInput = z.object({
     reason: z.string().describe("Why this is the best pick for the user's need, 1-2 sentences"),
     specs: z.array(specSchema).max(6).describe("Up to 6 key specs"),
     imageQuery: z.string().describe("Short photo query — used for alt text only"),
-    alternatives: z
-      .array(alternativeSchema)
-      .min(1)
-      .max(2)
-      .describe("2 cheaper/simpler alternatives with their tradeoff"),
   }),
+  alternatives: z
+    .array(alternativeSchema)
+    .max(2)
+    .default([])
+    .describe("Up to 2 cheaper/simpler alternatives, each with its tradeoff"),
 });
 
 export type RecommendProductInput = z.infer<typeof recommendProductInput>;

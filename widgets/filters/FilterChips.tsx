@@ -26,32 +26,38 @@ export function FilterChips({ output }: { input: SetFiltersInput; output: SetFil
   const activeCount = filters.filter((f) => f.active).length;
 
   return (
-    <section className="flex w-full flex-col gap-2" data-testid="filters-results">
-      <p className="text-muted-foreground flex items-center gap-1.5 text-sm">
+    <section
+      className="bg-card flex w-full flex-col gap-3 rounded-xl border p-4 sm:p-5"
+      data-testid="filters-results"
+    >
+      <p className="text-muted-foreground flex items-center gap-1.5 text-[13px]">
         <SlidersHorizontalIcon className="size-4" />
         {output.context}
       </p>
-      <div className="flex gap-2 overflow-x-auto pb-1">
-        {filters.map((f) => (
-          <button
-            aria-pressed={f.active}
-            className={cn(
-              "shrink-0 rounded-full border px-3 py-1 text-sm transition-colors",
-              f.active
-                ? "bg-primary text-primary-foreground border-primary"
-                : "text-muted-foreground hover:bg-muted",
-            )}
-            key={f.key}
-            onClick={() => toggle(f.key)}
-            type="button"
-          >
-            {f.label}
-          </button>
-        ))}
+      {/* Chips fill the row; Apply sits on the right (stacks on mobile). */}
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+        <div className="flex flex-1 gap-2 overflow-x-auto pb-1">
+          {filters.map((f) => (
+            <button
+              aria-pressed={f.active}
+              className={cn(
+                "shrink-0 rounded-full border px-3 py-1 text-sm transition-colors",
+                f.active
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "text-muted-foreground hover:bg-muted",
+              )}
+              key={f.key}
+              onClick={() => toggle(f.key)}
+              type="button"
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
+        <Button className="w-fit shrink-0" disabled={activeCount === 0} onClick={apply} size="sm">
+          Apply {activeCount > 0 ? `(${activeCount})` : ""}
+        </Button>
       </div>
-      <Button className="w-fit" disabled={activeCount === 0} onClick={apply} size="sm">
-        Apply {activeCount > 0 ? `(${activeCount})` : ""}
-      </Button>
     </section>
   );
 }

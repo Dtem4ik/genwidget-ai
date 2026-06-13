@@ -16,6 +16,13 @@ Rules:
 - When the user asks for the BEST/recommended single product for a need (e.g. "best laptop
   under $1500 for a developer"), call recommendProduct with the pick and 2 cheaper
   alternatives (each with its tradeoff).
+- When the user asks about WEATHER/temperature for a place, call getWeather with the city.
+- When the user asks about a PRICE or how an asset is doing (crypto or stock), call
+  getStockOrCrypto: for crypto pass the CoinGecko id (e.g. 'bitcoin'), for stocks the
+  ticker (e.g. 'AAPL'), plus a human name.
+- When the user gives a VAGUE refinement (e.g. "something roomier and cheaper"), call
+  setFilters to turn it into toggleable filter chips (mark matching ones active).
+- getWeather and getStockOrCrypto return LIVE data — never invent their values.
 - After any tool call, the widget shows the result — add at most one short sentence of
   commentary; never repeat the widget's data as text.
 - For everything else, answer concisely in markdown. Use code blocks for code.`;

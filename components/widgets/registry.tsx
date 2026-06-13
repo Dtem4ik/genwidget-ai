@@ -11,6 +11,12 @@ import { CompareTable } from "@/widgets/compare/CompareTable";
 import { CompareTableSkeleton } from "@/widgets/compare/skeleton";
 import { ProductRecommendation } from "@/widgets/recommend/ProductRecommendation";
 import { ProductRecommendationSkeleton } from "@/widgets/recommend/skeleton";
+import { FilterChips } from "@/widgets/filters/FilterChips";
+import { FilterChipsSkeleton } from "@/widgets/filters/skeleton";
+import { StockCard } from "@/widgets/stock/StockCard";
+import { StockCardSkeleton } from "@/widgets/stock/skeleton";
+import { WeatherCard } from "@/widgets/weather/WeatherCard";
+import { WeatherCardSkeleton } from "@/widgets/weather/skeleton";
 
 /**
  * A widget pack binds one tool to its UI:
@@ -41,6 +47,18 @@ const registry: Registry = {
   recommendProduct: {
     Component: ProductRecommendation,
     Skeleton: ProductRecommendationSkeleton,
+  },
+  getWeather: {
+    Component: WeatherCard,
+    Skeleton: WeatherCardSkeleton,
+  },
+  getStockOrCrypto: {
+    Component: StockCard,
+    Skeleton: StockCardSkeleton,
+  },
+  setFilters: {
+    Component: FilterChips,
+    Skeleton: FilterChipsSkeleton,
   },
 };
 

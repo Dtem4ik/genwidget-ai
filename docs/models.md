@@ -33,6 +33,16 @@ sharp `imageQuery` (e.g. "modern 2 bedroom apartment Tel Aviv interior", "renova
 apartment Tel Aviv balcony"). Noticeably more varied than 2.5-flash, which tended to
 repeat the same `imageQuery` across items. No few-shot needed.
 
+### Tool selection with 6 tools (phase 5, 2026-06-13)
+
+With all 6 tools registered (showApartments, compareProducts, recommendProduct,
+getWeather, getStockOrCrypto, setFilters), `gemini-3.1-flash-lite` still routes
+correctly in manual testing: weather → getWeather, "bitcoin price" → getStockOrCrypto
+(crypto id), "roomier and cheaper" → setFilters, compare vs recommend not confused. No
+degradation observed going from 3–4 to 6 tools. Sharp one-line tool descriptions in the
+system prompt (when to call each) are doing the work; revisit if a 7th overlapping tool
+lands.
+
 ### History — `gemini-2.5-flash` (phase 2, 2026-06-13)
 
 When the apartments tool was catalog-backed (`searchApartments`, filter args),

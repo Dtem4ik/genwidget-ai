@@ -1,0 +1,9 @@
+{
+  "symbol": "bitcoin",
+  "name": "Bitcoin",
+  "price": 63976,
+  "change24h": 57.4,
+  "changePercent": 0.09,
+  "sparkline": [60717, 61200, 60980, 62010, 61850, 62500, 63100, 62890, 63500, 63976],
+  "source": "crypto"
+}

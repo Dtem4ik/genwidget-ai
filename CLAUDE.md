@@ -25,7 +25,10 @@ stocks) instead of text. Demo at pet1.dtem4ik.dev.
 self-contained module:
 `widgets/<name>/{schema.ts, tool.ts, component.tsx, skeleton.tsx, *.test.tsx, fixtures.json}`.
 
-Tools wired today: `showApartments`, `compareProducts`, `recommendProduct`.
+Tools wired today: `showApartments`, `compareProducts`, `recommendProduct`, `getWeather`,
+`getStockOrCrypto`, `setFilters`. The two live-data tools (`getWeather`,
+`getStockOrCrypto`) have a real `execute()` that fetches a free keyless API with an 8s
+`AbortSignal` timeout and returns `{ error }` on failure; the rest are zod passthroughs.
 
 **Data pattern (ADR-003): the LLM generates content as the tool-call arguments;
 `execute()` is a zod-validated passthrough that returns the args.** No mock catalogs,
@@ -62,7 +65,7 @@ collapsible floor plans, staggered entrance animation.
 
 ## Status
 
-Phases 0–4 done and on prod (pet1.dtem4ik.dev). Live widgets: ApartmentResults,
-CompareTable, ProductRecommendation — all LLM-generated, gradient+icon cards, widget
-buttons loop back into the chat. Next: phase 5 (WeatherCard + StockCard live APIs,
-FilterChips).
+Phases 0–5 done and on prod (pet1.dtem4ik.dev). **All 6 MVP widgets live**:
+ApartmentResults, CompareTable, ProductRecommendation (LLM-generated), WeatherCard
+(Open-Meteo), StockCard (CoinGecko/Yahoo), FilterChips (model-controlled UI state).
+Shared EmptyState/ErrorState; widget buttons loop back into the chat. MVP scope complete.

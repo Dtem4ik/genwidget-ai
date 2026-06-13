@@ -2,8 +2,7 @@ import type { DeepPartial, ToolUIPart } from "ai";
 import { getStaticToolName } from "ai";
 import type { ComponentType } from "react";
 
-import { AlertCircleIcon } from "lucide-react";
-
+import { ErrorState } from "@/components/widgets/widget-states";
 import type { ChatTools } from "@/lib/ai/tools";
 import { ApartmentResults } from "@/widgets/apartments/component";
 import { ApartmentResultsSkeleton } from "@/widgets/apartments/skeleton";
@@ -11,6 +10,12 @@ import { CompareTable } from "@/widgets/compare/CompareTable";
 import { CompareTableSkeleton } from "@/widgets/compare/skeleton";
 import { ProductRecommendation } from "@/widgets/recommend/ProductRecommendation";
 import { ProductRecommendationSkeleton } from "@/widgets/recommend/skeleton";
+import { FilterChips } from "@/widgets/filters/FilterChips";
+import { FilterChipsSkeleton } from "@/widgets/filters/skeleton";
+import { StockCard } from "@/widgets/stock/StockCard";
+import { StockCardSkeleton } from "@/widgets/stock/skeleton";
+import { WeatherCard } from "@/widgets/weather/WeatherCard";
+import { WeatherCardSkeleton } from "@/widgets/weather/skeleton";
 
 /**
  * A widget pack binds one tool to its UI:
@@ -42,18 +47,21 @@ const registry: Registry = {
     Component: ProductRecommendation,
     Skeleton: ProductRecommendationSkeleton,
   },
+  getWeather: {
+    Component: WeatherCard,
+    Skeleton: WeatherCardSkeleton,
+  },
+  getStockOrCrypto: {
+    Component: StockCard,
+    Skeleton: StockCardSkeleton,
+  },
+  setFilters: {
+    Component: FilterChips,
+    Skeleton: FilterChipsSkeleton,
+  },
 };
 
 export type ChatToolPart = ToolUIPart<ChatTools>;
-
-function WidgetError({ message }: { message?: string }) {
-  return (
-    <div className="border-destructive/50 bg-destructive/10 flex items-center gap-2 rounded-lg border px-4 py-3 text-sm">
-      <AlertCircleIcon className="size-4 shrink-0" />
-      <span>{message ?? "The widget failed to load."}</span>
-    </div>
-  );
-}
 
 /** Renders the right widget for a tool part based on its streaming state. */
 export function ToolWidget({ part }: { part: ChatToolPart }) {
@@ -69,7 +77,7 @@ export function ToolWidget({ part }: { part: ChatToolPart }) {
     case "output-available":
       return <pack.Component input={part.input} output={part.output} />;
     case "output-error":
-      return <WidgetError message={part.errorText} />;
+      return <ErrorState message={part.errorText ?? "The widget failed to load."} />;
     default:
       return null;
   }

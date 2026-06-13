@@ -1,9 +1,11 @@
 "use client";
 
-import { Home } from "lucide-react";
+import { BuildingIcon, Home } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 
 import { DomainCard } from "@/components/widgets/domain-card";
+import { EmptyState } from "@/components/widgets/widget-states";
+import { useWidgetActions } from "@/components/widgets/widget-actions";
 import { Button } from "@/components/ui/button";
 
 import { FloorPlan } from "./floor-plan";
@@ -60,9 +62,21 @@ export function ApartmentResults({
   input: ShowApartmentsInput;
   output: ShowApartmentsOutput;
 }) {
+  const { ask } = useWidgetActions();
   const { apartments } = output;
   const count = apartments.length;
   const reduceMotion = useReducedMotion();
+
+  if (count === 0) {
+    return (
+      <EmptyState
+        actionLabel="Broaden the search"
+        icon={BuildingIcon}
+        message="No matching apartments. Try a wider budget or a different area."
+        onAction={() => ask("Show apartments with a wider budget and any location")}
+      />
+    );
+  }
 
   return (
     <section className="flex w-full flex-col gap-3" data-testid="apartments-results">

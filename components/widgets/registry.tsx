@@ -2,8 +2,7 @@ import type { DeepPartial, ToolUIPart } from "ai";
 import { getStaticToolName } from "ai";
 import type { ComponentType } from "react";
 
-import { AlertCircleIcon } from "lucide-react";
-
+import { ErrorState } from "@/components/widgets/widget-states";
 import type { ChatTools } from "@/lib/ai/tools";
 import { ApartmentResults } from "@/widgets/apartments/component";
 import { ApartmentResultsSkeleton } from "@/widgets/apartments/skeleton";
@@ -64,15 +63,6 @@ const registry: Registry = {
 
 export type ChatToolPart = ToolUIPart<ChatTools>;
 
-function WidgetError({ message }: { message?: string }) {
-  return (
-    <div className="border-destructive/50 bg-destructive/10 flex items-center gap-2 rounded-lg border px-4 py-3 text-sm">
-      <AlertCircleIcon className="size-4 shrink-0" />
-      <span>{message ?? "The widget failed to load."}</span>
-    </div>
-  );
-}
-
 /** Renders the right widget for a tool part based on its streaming state. */
 export function ToolWidget({ part }: { part: ChatToolPart }) {
   const name = getStaticToolName(part) as keyof ChatTools;
@@ -87,7 +77,7 @@ export function ToolWidget({ part }: { part: ChatToolPart }) {
     case "output-available":
       return <pack.Component input={part.input} output={part.output} />;
     case "output-error":
-      return <WidgetError message={part.errorText} />;
+      return <ErrorState message={part.errorText ?? "The widget failed to load."} />;
     default:
       return null;
   }

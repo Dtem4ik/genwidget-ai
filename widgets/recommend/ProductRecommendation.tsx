@@ -1,6 +1,10 @@
 "use client";
 
+import { ArrowUpRightIcon } from "lucide-react";
+
 import { DomainCard, iconForCategory } from "@/components/widgets/domain-card";
+import { useWidgetActions } from "@/components/widgets/widget-actions";
+import { Button } from "@/components/ui/button";
 
 import type { RecommendProductInput, RecommendProductOutput } from "./schema";
 
@@ -12,6 +16,7 @@ export function ProductRecommendation({
   input: RecommendProductInput;
   output: RecommendProductOutput;
 }) {
+  const { ask } = useWidgetActions();
   const { product, userNeed } = output;
   const Icon = iconForCategory(product.category);
 
@@ -41,6 +46,16 @@ export function ProductRecommendation({
             ))}
           </dl>
         )}
+        <Button
+          aria-label={`Why ${product.name} is the best pick`}
+          className="w-fit"
+          onClick={() => ask(`Explain why ${product.name} is the best pick for my need`)}
+          size="sm"
+          variant="outline"
+        >
+          Why this pick?
+          <ArrowUpRightIcon className="size-3" />
+        </Button>
       </div>
 
       {/* Alternatives */}
@@ -49,12 +64,22 @@ export function ProductRecommendation({
           <p className="text-muted-foreground text-sm">Cheaper alternatives</p>
           <div className="grid gap-3 sm:grid-cols-2">
             {product.alternatives.map((alt) => (
-              <div className="bg-card flex flex-col gap-1 rounded-lg border p-3" key={alt.name}>
+              <div className="bg-card flex flex-col gap-2 rounded-lg border p-3" key={alt.name}>
                 <div className="flex items-baseline justify-between gap-2">
                   <p className="font-medium">{alt.name}</p>
                   <p className="text-sm font-semibold tabular-nums">{formatPrice(alt.price)}</p>
                 </div>
                 <p className="text-muted-foreground text-xs">{alt.tradeoff}</p>
+                <Button
+                  aria-label={`Tell me more about ${alt.name}`}
+                  className="mt-auto w-fit"
+                  onClick={() => ask(`Tell me more about ${alt.name}`)}
+                  size="sm"
+                  variant="ghost"
+                >
+                  Tell me more
+                  <ArrowUpRightIcon className="size-3" />
+                </Button>
               </div>
             ))}
           </div>

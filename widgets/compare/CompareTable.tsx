@@ -1,9 +1,11 @@
 "use client";
 
-import { CheckIcon } from "lucide-react";
+import { ArrowUpRightIcon, CheckIcon } from "lucide-react";
 import { Fragment } from "react";
 
 import { DomainCard, iconForCategory } from "@/components/widgets/domain-card";
+import { useWidgetActions } from "@/components/widgets/widget-actions";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 import type { CompareProduct, CompareProductsInput, CompareProductsOutput } from "./schema";
@@ -55,6 +57,7 @@ export function CompareTable({
   input: CompareProductsInput;
   output: CompareProductsOutput;
 }) {
+  const { ask } = useWidgetActions();
   const { products, question } = output;
   const labels = specLabels(products);
   const columns = `minmax(76px,auto) repeat(${products.length}, minmax(130px,1fr))`;
@@ -118,6 +121,39 @@ export function CompareTable({
                 </li>
               ))}
             </ul>
+          ))}
+
+          {/* actions — each button sends a follow-up into the chat (UI → AI → UI) */}
+          <div aria-hidden className="pt-3" />
+          {products.map((product, i) => (
+            <div className={cn("flex flex-col gap-1.5 pt-3", tint(product.recommended))} key={i}>
+              <Button
+                aria-label={`Tell me more about ${product.name}`}
+                onClick={() =>
+                  ask(`Tell me more about ${product.name} — where to buy, warranty, alternatives`)
+                }
+                size="sm"
+                variant="outline"
+              >
+                Tell me more
+                <ArrowUpRightIcon className="size-3" />
+              </Button>
+              <Button
+                aria-label={`Compare ${product.name} with something cheaper`}
+                onClick={() =>
+                  ask(
+                    `Compare ${product.name} with cheaper alternatives under $${Math.round(
+                      product.price * 0.7,
+                    )}`,
+                  )
+                }
+                size="sm"
+                variant="ghost"
+              >
+                Something cheaper
+                <ArrowUpRightIcon className="size-3" />
+              </Button>
+            </div>
           ))}
         </div>
       </div>

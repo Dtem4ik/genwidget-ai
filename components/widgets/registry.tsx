@@ -26,7 +26,7 @@ type Registry = {
 };
 
 const registry: Registry = {
-  searchApartments: {
+  showApartments: {
     Component: ApartmentResults,
     Skeleton: ApartmentResultsSkeleton,
   },

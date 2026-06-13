@@ -1,54 +1,35 @@
 import { z } from "zod";
 
-export const searchApartmentsInput = z.object({
-  rooms: z
-    .number()
-    .int()
-    .min(1)
-    .max(4)
-    .optional()
-    .describe("Exact number of rooms (bedrooms + living room), 1-4. '2-bedroom' means rooms: 2."),
-  minArea: z.number().positive().optional().describe("Minimum total area in square meters"),
-  maxPrice: z.number().positive().optional().describe("Maximum price in USD, e.g. 200000"),
-  complex: z
-    .enum(["Solara Heights", "Northbay Park"])
-    .optional()
-    .describe("Residential complex name, only if the user mentions one"),
+export const apartmentSchema = z.object({
+  title: z.string().describe("Short listing title, e.g. 'Bright 2-room near Rothschild Blvd'"),
+  location: z.string().describe("Neighborhood and city, e.g. 'Florentin, Tel Aviv'"),
+  rooms: z.number().int().min(0).max(5).describe("Number of rooms; 0 means studio"),
+  area: z.number().positive().describe("Total area in square meters"),
+  floor: z.number().int().min(0).describe("Floor the apartment is on"),
+  totalFloors: z.number().int().min(1).describe("Total floors in the building"),
+  price: z.number().positive().describe("Price in USD"),
+  features: z
+    .array(z.string())
+    .describe("2-4 short feature tags, e.g. 'balcony', 'parking', 'renovated'"),
+  imageQuery: z
+    .string()
+    .describe(
+      "Short photo search query for this listing, e.g. 'modern apartment living room tel aviv' " +
+        "or 'luxury studio interior'. Make it specific to the apartment.",
+    ),
 });
 
-export type SearchApartmentsInput = z.infer<typeof searchApartmentsInput>;
+export type ApartmentItem = z.infer<typeof apartmentSchema>;
 
-export interface FloorPlanRoom {
-  id: string;
-  label: string;
-  area: number;
-  /** Closed polygon, plan units: [[x, y], ...] */
-  polygon: number[][];
-}
+export const showApartmentsInput = z.object({
+  apartments: z
+    .array(apartmentSchema)
+    .min(1)
+    .max(6)
+    .describe("The apartment listings to display, generated to match the user's request"),
+});
 
-export interface FloorPlan {
-  width: number;
-  height: number;
-  rooms: FloorPlanRoom[];
-}
+export type ShowApartmentsInput = z.infer<typeof showApartmentsInput>;
 
-export interface Apartment {
-  id: string;
-  complex: string;
-  district: string;
-  rooms: number;
-  area: number;
-  floor: number;
-  totalFloors: number;
-  price: number;
-  currency: string;
-  pricePerM2: number;
-  features: string[];
-  floorPlan: FloorPlan;
-}
-
-export interface SearchApartmentsOutput {
-  apartments: Apartment[];
-  /** Total matches before truncation to the result limit */
-  total: number;
-}
+// execute() is a passthrough — output mirrors the validated input.
+export type ShowApartmentsOutput = ShowApartmentsInput;

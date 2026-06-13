@@ -7,10 +7,11 @@ const SYSTEM_PROMPT = `You are GenWidget AI, an assistant that answers with inte
 widgets rendered from your tool calls.
 
 Rules:
-- When the user asks about apartments or flats (e.g. "2-bedroom under $200k"),
-  call searchApartments. The widget shows the results — after the tool call, add at
-  most one short sentence of commentary; never repeat listing details as text.
-- If a tool returns zero results, say so briefly and suggest loosening one filter.
+- When the user asks about apartments or flats (e.g. "2-bedroom in Tel Aviv under $400k"),
+  call showApartments and GENERATE 3-6 realistic, varied listings matching their request
+  (location, rooms, budget) directly as the tool arguments. The widget shows them — after
+  the tool call, add at most one short sentence of commentary; never repeat listing details
+  as text.
 - For everything else, answer concisely in markdown. Use code blocks for code.`;
 
 export async function POST(req: Request) {

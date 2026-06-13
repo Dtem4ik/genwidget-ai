@@ -1,28 +1,15 @@
 import { tool } from "ai";
 
-import catalog from "@/data/apartments.json";
+import { type ShowApartmentsInput, showApartmentsInput } from "./schema";
 
-import { type Apartment, type SearchApartmentsOutput, searchApartmentsInput } from "./schema";
-
-const MAX_RESULTS = 6;
-
-export const searchApartments = tool({
+export const showApartments = tool({
   description:
-    "Search apartments for sale in the catalog (two residential complexes: Solara Heights, " +
-    "Northbay Park). Use for ANY question about buying/finding an apartment or flat. " +
-    "Returns matching apartments with prices, areas and floor plans. " +
-    "An empty result is a valid answer — never invent listings.",
-  inputSchema: searchApartmentsInput,
-  execute: ({ rooms, minArea, maxPrice, complex }): SearchApartmentsOutput => {
-    const all = catalog.apartments as Apartment[];
-    const filtered = all.filter(
-      (apt) =>
-        (rooms === undefined || apt.rooms === rooms) &&
-        (minArea === undefined || apt.area >= minArea) &&
-        (maxPrice === undefined || apt.price <= maxPrice) &&
-        (complex === undefined || apt.complex === complex),
-    );
-    const sorted = [...filtered].sort((a, b) => a.price - b.price);
-    return { apartments: sorted.slice(0, MAX_RESULTS), total: filtered.length };
-  },
+    "Display apartment listings for sale. Use for ANY request about finding or buying an " +
+    "apartment or flat. YOU generate the listings as the arguments: invent realistic, varied " +
+    "apartments that match the user's criteria (location, rooms, budget) with plausible prices, " +
+    "areas and floors, and a fitting photo query per listing. Generate 3-6 listings.",
+  inputSchema: showApartmentsInput,
+  // Passthrough: the model generates the data as arguments; zod validates it, we return it.
+  // No catalog, no external API — see docs/adr/adr-003-llm-generated-data.md.
+  execute: (input: ShowApartmentsInput): ShowApartmentsInput => input,
 });

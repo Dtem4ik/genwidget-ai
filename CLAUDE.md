@@ -35,8 +35,15 @@ Tools wired today: `showApartments`, `compareProducts`, `recommendProduct`, `get
 no external content API. Live external APIs are reserved for genuinely real-time data
 (weather, stocks — later phases).
 
+**Responsive layout:** list-rendering widgets wrap their items in
+`<WidgetGrid count={n}>` (`components/widgets/WidgetGrid.tsx`) — it maps item count to
+the column layout (1 → full width, 2 → two cols, 3+ → three), always single-column on
+mobile. Widgets don't manage their own grid positioning. Single-item widgets render
+full-width with a layout designed for it (hero / horizontal).
+
 **No stock photos (ADR-004):** the image slot is a shared `DomainCard` — a theme
-gradient + Lucide icon (`iconForCategory`). `imageQuery` stays on schemas for alt text.
+gradient + Lucide icon (`iconForCategory`, icon scales with card size). `imageQuery`
+stays on schemas for alt text.
 
 **Spec maps:** use an array of `{label, value}`, NOT `z.record()` — Gemini
 function-calling rejects JSON-schema `additionalProperties` (400).

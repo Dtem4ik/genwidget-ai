@@ -10,14 +10,14 @@
       { "label": "RAM", "value": "16GB" },
       { "label": "Storage", "value": "512GB SSD" }
     ],
-    "imageQuery": "macbook air laptop",
-    "alternatives": [
-      {
-        "name": "Acer Swift Go 14",
-        "price": 850,
-        "tradeoff": "Lower build quality and battery life."
-      },
-      { "name": "ThinkPad E14", "price": 1050, "tradeoff": "Weaker graphics, lower-res display." }
-    ]
-  }
+    "imageQuery": "macbook air laptop"
+  },
+  "alternatives": [
+    {
+      "name": "Acer Swift Go 14",
+      "price": 850,
+      "tradeoff": "Lower build quality and battery life."
+    },
+    { "name": "ThinkPad E14", "price": 1050, "tradeoff": "Weaker graphics, lower-res display." }
+  ]
 }

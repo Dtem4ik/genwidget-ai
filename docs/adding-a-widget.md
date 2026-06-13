@@ -28,8 +28,12 @@ Rules that make packs work well:
 - `skeleton.tsx`: render placeholder cards that mirror the real card slot-for-slot so
   the layout doesn't shift when data/photos arrive (apartments reserves the photo
   height, spec line, toggle and buttons).
-- `component.tsx`: must include an empty state. Both themes (use theme tokens:
-  `bg-card`, `text-muted-foreground`, …) and mobile layout are part of done.
+- `component.tsx`: must include an empty state (shared `EmptyState`/`ErrorState` from
+  `components/widgets/widget-states.tsx`). Both themes (use theme tokens: `bg-card`,
+  `text-muted-foreground`, …) and mobile layout are part of done.
+- **Layout:** if the widget renders a list, wrap the items in
+  `<WidgetGrid count={items.length}>` — it handles responsive columns. A single-item
+  widget renders full-width; design that layout (don't just stretch a narrow card).
 
 ## 2. Register the tool
 

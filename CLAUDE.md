@@ -21,12 +21,18 @@ stocks) instead of text. Demo at pet1.dtem4ik.dev.
 ## Architecture
 
 `app/api/chat` → `streamText` + tools (`lib/ai/tools.ts`) → widget registry
-(`components/widgets/registry.tsx`) → `widgets/<name>/` modules. Mock catalogs
-live in `data/*.json`. Each widget is a self-contained module:
-`widgets/<name>/{schema.ts, tool.ts, component.tsx, skeleton.tsx, component.test.tsx, fixtures.json}`.
+(`components/widgets/registry.tsx`) → `widgets/<name>/` modules. Each widget is a
+self-contained module:
+`widgets/<name>/{schema.ts, tool.ts, component.tsx, skeleton.tsx, *.test.tsx, fixtures.json}`.
 
-Models are free-tier only (Gemini Flash → Groq → OpenRouter free); switching
-providers is a config change, never a rewrite.
+**Data pattern (ADR-003): the LLM generates content as the tool-call arguments;
+`execute()` is a zod-validated passthrough that returns the args.** No mock catalogs,
+no external content API. Live external APIs are reserved for genuinely real-time data
+(weather, stocks — later phases). Widget photos use a keyless image host built from an
+LLM-provided `imageQuery` field.
+
+Models are free-tier only (default `gemini-3.1-flash-lite`; → Groq → OpenRouter free);
+switching providers is a one-line change in `lib/ai/provider.ts`. See `docs/models.md`.
 
 ## Rules
 
@@ -41,4 +47,10 @@ providers is a config change, never a rewrite.
 ## How to add a widget
 
 See `docs/adding-a-widget.md` — follow it exactly. Reference implementation:
-`widgets/apartments/` (searchApartments tool + ApartmentResults widget).
+`widgets/apartments/` (showApartments tool + ApartmentResults widget): photos,
+collapsible floor plans, staggered entrance animation.
+
+## Status
+
+Phases 0–3 done and on prod (pet1.dtem4ik.dev). Apartments widget: LLM-generated
+listings with photos and floor plans. Next: phase 4 (compare + recommend widgets).

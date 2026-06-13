@@ -20,13 +20,14 @@ Rules that make packs work well:
 
 - `schema.ts`: every field gets `.describe()` — the model reads these. Spell out
   unit conventions ("price in USD", "area in m²") and enum values.
-- `tool.ts`: description says WHEN to use the tool ("Use for ANY question about…"),
-  what it returns, and that an empty result is valid — never let the model invent data.
-  Cap result counts (apartments uses 6) and report the true `total`.
-- Data source: mock catalogs live in `data/*.json` (state this honestly); live APIs
-  are called inside `execute()`.
-- `skeleton.tsx`: render something meaningful from partial input as it streams
-  (apartments shows filter chips appearing one by one).
+- `tool.ts`: description says WHEN to use the tool ("Use for ANY question about…")
+  and what to generate. **Data pattern (ADR-003): the model generates the content as
+  the tool arguments; `execute()` is a zod passthrough — `(input) => input`.** No mock
+  catalogs. Live external APIs only for genuinely real-time data (weather, stocks),
+  called inside `execute()`.
+- `skeleton.tsx`: render placeholder cards that mirror the real card slot-for-slot so
+  the layout doesn't shift when data/photos arrive (apartments reserves the photo
+  height, spec line, toggle and buttons).
 - `component.tsx`: must include an empty state. Both themes (use theme tokens:
   `bg-card`, `text-muted-foreground`, …) and mobile layout are part of done.
 
@@ -36,7 +37,7 @@ In `lib/ai/tools.ts` add one entry:
 
 ```ts
 export const tools = {
-  searchApartments,
+  showApartments,
   yourNewTool, // ← here
 } satisfies ToolSet;
 ```
@@ -49,7 +50,7 @@ In `components/widgets/registry.tsx` add one entry:
 
 ```ts
 const registry: Registry = {
-  searchApartments: { Component: ApartmentResults, Skeleton: ApartmentResultsSkeleton },
+  showApartments: { Component: ApartmentResults, Skeleton: ApartmentResultsSkeleton },
   yourNewTool: { Component: YourWidget, Skeleton: YourWidgetSkeleton }, // ← here
 };
 ```
@@ -80,5 +81,5 @@ findings (did the model pick the tool? correct args?) in `docs/models.md`.
 - [ ] skeleton + data + empty + error states
 - [ ] light + dark themes, mobile layout
 - [ ] component test covering skeleton / data / error
-- [ ] tool description forbids inventing data; empty result handled
+- [ ] `execute()` is a zod passthrough (or a live real-time API call); no mock catalog
 - [ ] system prompt rule added; demo prompt verified end-to-end

@@ -2,15 +2,23 @@ import { LayoutTemplateIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
+import { ListingPhoto } from "./listing-photo";
 import type { ApartmentItem, ShowApartmentsInput, ShowApartmentsOutput } from "./schema";
 
 export const formatPrice = (price: number) => `$${price.toLocaleString("en-US")}`;
 
 export const roomsLabel = (rooms: number) => (rooms === 0 ? "Studio" : `${rooms}-room`);
 
-export function ApartmentCard({ apartment }: { apartment: ApartmentItem }) {
+export function ApartmentCard({
+  apartment,
+  index = 0,
+}: {
+  apartment: ApartmentItem;
+  index?: number;
+}) {
   return (
     <article className="bg-card flex flex-col gap-3 rounded-xl border p-4">
+      <ListingPhoto alt={apartment.title} lock={index + 1} query={apartment.imageQuery} />
       <div className="flex flex-col gap-0.5">
         <div className="flex items-baseline justify-between gap-2">
           <h3 className="font-medium">{apartment.title}</h3>
@@ -70,7 +78,7 @@ export function ApartmentResults({
       </header>
       <div className="grid gap-3 sm:grid-cols-2">
         {apartments.map((apartment, i) => (
-          <ApartmentCard apartment={apartment} key={`${apartment.title}-${i}`} />
+          <ApartmentCard apartment={apartment} index={i} key={`${apartment.title}-${i}`} />
         ))}
       </div>
     </section>

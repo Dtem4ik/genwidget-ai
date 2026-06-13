@@ -5,6 +5,8 @@ import type { ShowApartmentsInput } from "./schema";
 function CardSkeleton() {
   return (
     <div className="bg-card flex flex-col gap-3 rounded-xl border p-4">
+      {/* Photo slot — same h-40 as the real photo, so cards don't resize on load */}
+      <div className="bg-muted h-40 w-full animate-pulse rounded-lg" />
       <div className="flex items-baseline justify-between gap-2">
         <div className="bg-muted h-5 w-40 animate-pulse rounded" />
         <div className="bg-muted h-5 w-20 animate-pulse rounded" />

@@ -56,7 +56,11 @@ export function DomainCard({
       )}
       role="img"
     >
-      <Icon className="text-primary/50 size-10" strokeWidth={1.5} />
+      {/* 36px on compact cards, 48px on full-width */}
+      <Icon
+        className={cn("text-primary/50", size === "sm" ? "size-9" : "size-12")}
+        strokeWidth={1.5}
+      />
     </div>
   );
 }

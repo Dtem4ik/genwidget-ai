@@ -37,7 +37,7 @@ export function FloorPlan({ rooms }: { rooms: number }) {
     <div>
       <button
         aria-expanded={open}
-        className="text-muted-foreground hover:text-foreground flex items-center gap-1 text-sm transition-colors"
+        className="text-muted-foreground hover:text-foreground focus-visible:ring-ring flex items-center gap-1 rounded text-sm transition-colors focus-visible:ring-2 focus-visible:outline-none"
         onClick={() => setOpen((v) => !v)}
         type="button"
       >

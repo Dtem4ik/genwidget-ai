@@ -41,7 +41,7 @@ export function FilterChips({ output }: { input: SetFiltersInput; output: SetFil
             <button
               aria-pressed={f.active}
               className={cn(
-                "shrink-0 rounded-full border px-3 py-1 text-sm transition-colors",
+                "focus-visible:ring-ring shrink-0 rounded-full border px-3 py-1 text-sm transition-colors focus-visible:ring-2 focus-visible:outline-none",
                 f.active
                   ? "bg-primary text-primary-foreground border-primary"
                   : "text-muted-foreground hover:bg-muted",

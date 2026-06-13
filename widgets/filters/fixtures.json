@@ -1,0 +1,7 @@
+{
+  "context": "Refining apartment search",
+  "filters": [
+    { "key": "minArea", "label": "Roomier (80m²+)", "value": "80", "active": true },
+    { "key": "maxPrice", "label": "Cheaper (under $500k)", "value": "500000", "active": true }
+  ]
+}

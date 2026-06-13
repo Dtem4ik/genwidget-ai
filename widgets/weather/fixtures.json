@@ -1,0 +1,9 @@
+{
+  "city": "Tel Aviv, Israel",
+  "temperature": 25,
+  "feelsLike": 27,
+  "weatherCode": 2,
+  "windspeed": 5,
+  "humidity": 71,
+  "units": "celsius"
+}

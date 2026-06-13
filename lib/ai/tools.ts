@@ -1,10 +1,10 @@
 import type { InferUITools, ToolSet, UIDataTypes, UIMessage } from "ai";
 
-import { searchApartments } from "@/widgets/apartments/tool";
+import { showApartments } from "@/widgets/apartments/tool";
 
 // Every widget pack contributes exactly one entry here.
 export const tools = {
-  searchApartments,
+  showApartments,
 } satisfies ToolSet;
 
 export type ChatTools = InferUITools<typeof tools>;

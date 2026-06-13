@@ -45,8 +45,11 @@ skeleton, test, fixtures}` — and adding a new domain is a documented 30-minute
 
 ## Data sources
 
-Live free APIs where they exist (weather, stocks); realistic mock JSON catalogs where
-real APIs are paid (apartments, phones, laptops). Mocked catalogs are honestly labeled.
+For domains with no free real-time API (apartments, products), **the model generates
+the listing data itself** as the tool-call arguments — the data is plausible, not real
+listings. Genuinely real-time domains (weather, stocks — later phases) use live free
+APIs. Photos come from a keyless image host based on a model-provided query. See
+[ADR-003](docs/adr/adr-003-llm-generated-data.md).
 
 ## Development
 

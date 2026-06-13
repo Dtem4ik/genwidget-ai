@@ -12,7 +12,8 @@
 
 ![Demo](docs/demo.gif)
 
-<!-- TODO: record demo GIF after Phase 5 -->
+<!-- TODO: drop in docs/demo.gif — a screen capture of the live demo (apartments →
+     floor plan → weather → compare). Needs a manual recording from a real browser. -->
 
 ## What makes this different
 
@@ -31,17 +32,23 @@ Open **[pet1.dtem4ik.dev](https://pet1.dtem4ik.dev)** and paste any of these:
 - `2-bedroom apartments in Tel Aviv under $400k`
 - `compare iPhone 15 Pro vs Pixel 9 vs Galaxy S25`
 - `best laptop under $1500 for a developer`
+- `what's the weather in Tel Aviv?`
+- `bitcoin price`
+- `something roomier and cheaper`
 
 ## Widgets
 
-| Widget                | Domain      | Data           | Status     |
-| --------------------- | ----------- | -------------- | ---------- |
-| ApartmentResults      | Real estate | LLM-generated  | ✅ Live    |
-| CompareTable          | Any product | LLM-generated  | ✅ Live    |
-| ProductRecommendation | Any product | LLM-generated  | ✅ Live    |
-| WeatherCard           | Weather     | Open-Meteo API | 🚧 Phase 5 |
-| StockCard             | Finance     | Free API       | 🚧 Phase 5 |
-| FilterChips           | UI state    | LLM-generated  | 🚧 Phase 5 |
+| Widget                | Domain      | Data                     | Status  |
+| --------------------- | ----------- | ------------------------ | ------- |
+| ApartmentResults      | Real estate | LLM-generated            | ✅ Live |
+| CompareTable          | Any product | LLM-generated            | ✅ Live |
+| ProductRecommendation | Any product | LLM-generated            | ✅ Live |
+| WeatherCard           | Weather     | Open-Meteo API (live)    | ✅ Live |
+| StockCard             | Finance     | CoinGecko / Yahoo (live) | ✅ Live |
+| FilterChips           | UI state    | LLM-generated            | ✅ Live |
+
+All 6 MVP widgets are live. LLM-generated widgets render plausible (not real) data;
+the weather and price widgets use real free APIs.
 
 ## Architecture
 
@@ -70,6 +77,8 @@ task by design: schema → tool → component → one registry entry.
 
 Next.js · TypeScript (strict) · Vercel AI SDK · zod · Tailwind · shadcn/ui · motion ·
 Vitest · Gemini (free tier) · deployed on Vercel.
+
+**Live APIs:** Open-Meteo (weather, keyless) · CoinGecko + Yahoo Finance (prices, keyless).
 
 ## Development
 

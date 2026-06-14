@@ -1,11 +1,14 @@
 "use client";
 
 import { useChat } from "@ai-sdk/react";
-import { isStaticToolUIPart } from "ai";
-import { MessageSquareIcon, RefreshCwIcon } from "lucide-react";
-import type { ReactNode } from "react";
+import { DefaultChatTransport, isStaticToolUIPart } from "ai";
+import { MessageSquareIcon, RefreshCwIcon, XIcon } from "lucide-react";
+import { type ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 
+import { useDemoReplay } from "@/hooks/useDemoReplay";
 import type { ChatUIMessage } from "@/lib/ai/tools";
+import { BYOK_STORAGE_KEY, BYOKBanner } from "@/components/chat/BYOKBanner";
+import { SuggestedPrompts } from "@/components/chat/SuggestedPrompts";
 import { type ChatToolPart, ToolWidget } from "@/components/widgets/registry";
 import { WidgetActionsProvider } from "@/components/widgets/widget-actions";
 import { WidgetGrid } from "@/components/widgets/WidgetGrid";
@@ -74,14 +77,65 @@ export function MessageParts({ message }: { message: ChatUIMessage }) {
 }
 
 export function Chat() {
-  const { messages, sendMessage, status, error, regenerate, stop } = useChat<ChatUIMessage>();
+  const [rateLimited, setRateLimited] = useState(false);
+
+  const [byokKey, setByokKey] = useState<string | null>(null);
+  useEffect(() => {
+    // localStorage isn't available during SSR, so read it after mount.
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time hydration read
+    setByokKey(localStorage.getItem(BYOK_STORAGE_KEY));
+  }, []);
+  const removeByok = () => {
+    localStorage.removeItem(BYOK_STORAGE_KEY);
+    location.reload();
+  };
+
+  // Custom transport: attach the visitor's BYOK key (if any) per request, and detect
+  // the 429 (daily limit) to surface the BYOK banner.
+  const transport = useMemo(
+    () =>
+      new DefaultChatTransport<ChatUIMessage>({
+        headers: (): Record<string, string> => {
+          const key = typeof window === "undefined" ? null : localStorage.getItem(BYOK_STORAGE_KEY);
+          return key ? { "x-byok-key": key } : {};
+        },
+        fetch: async (input, init) => {
+          const res = await fetch(input as RequestInfo, init);
+          if (res.status === 429) setRateLimited(true);
+          return res;
+        },
+      }),
+    [],
+  );
+
+  const { messages, sendMessage, setMessages, status, error, regenerate, stop } =
+    useChat<ChatUIMessage>({ transport });
+
+  // Landing demo: replays a scripted scenario (no API) until the user interacts.
+  const [demoPlaying, setDemoPlaying] = useState(true);
+  const [isLanding, setIsLanding] = useState(true);
+  const onDemoFinish = useCallback(() => setDemoPlaying(false), []);
+  useDemoReplay({ play: demoPlaying, setMessages, onFinish: onDemoFinish });
+
+  // Any real interaction clears the throwaway demo and starts a fresh conversation.
+  const startRealChat = useCallback(
+    (text: string) => {
+      if (isLanding) {
+        setIsLanding(false);
+        setDemoPlaying(false);
+        setMessages([]);
+      }
+      sendMessage({ text });
+    },
+    [isLanding, sendMessage, setMessages],
+  );
 
   const handleSubmit = (message: PromptInputMessage) => {
     const text = message.text.trim();
     if (!text) {
       return;
     }
-    sendMessage({ text });
+    startRealChat(text);
   };
 
   return (
@@ -125,7 +179,24 @@ export function Chat() {
           </ConversationContent>
           <ConversationScrollButton />
         </Conversation>
-        <div className="px-4 pb-4">
+        <div className="flex flex-col gap-2 px-4 pb-4">
+          {demoPlaying && (
+            <p className="text-muted-foreground text-center text-xs">
+              Demo mode — type anything to start your own chat
+            </p>
+          )}
+          {isLanding && <SuggestedPrompts onSelect={startRealChat} />}
+          {rateLimited && !byokKey && <BYOKBanner />}
+          {byokKey && (
+            <div className="text-muted-foreground flex items-center gap-1.5 self-start text-xs">
+              <span className="bg-primary/10 inline-flex items-center gap-1 rounded-full px-2 py-0.5">
+                Using your key
+                <button aria-label="Remove your key" onClick={removeByok} type="button">
+                  <XIcon className="size-3" />
+                </button>
+              </span>
+            </div>
+          )}
           <PromptInput onSubmit={handleSubmit}>
             <PromptInputBody>
               <PromptInputTextarea placeholder="Ask anything…" />

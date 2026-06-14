@@ -6,6 +6,7 @@ import { MessageSquareIcon, RefreshCwIcon } from "lucide-react";
 import { type ReactNode, useMemo, useState } from "react";
 
 import type { ChatUIMessage } from "@/lib/ai/tools";
+import { SuggestedPrompts } from "@/components/chat/SuggestedPrompts";
 import { type ChatToolPart, ToolWidget } from "@/components/widgets/registry";
 import { WidgetActionsProvider } from "@/components/widgets/widget-actions";
 import { WidgetGrid } from "@/components/widgets/WidgetGrid";
@@ -143,6 +144,7 @@ export function Chat() {
           <ConversationScrollButton />
         </Conversation>
         <div className="flex flex-col gap-2 px-4 pb-4">
+          {messages.length === 0 && <SuggestedPrompts onSelect={(text) => sendMessage({ text })} />}
           {rateLimited && (
             <div className="border-primary/40 bg-primary/5 rounded-lg border px-4 py-3 text-sm">
               You&apos;ve used today&apos;s 10 free messages. Paste your own Gemini key below to

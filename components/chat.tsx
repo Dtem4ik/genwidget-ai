@@ -2,11 +2,12 @@
 
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, isStaticToolUIPart } from "ai";
-import { MessageSquareIcon, RefreshCwIcon } from "lucide-react";
-import { type ReactNode, useCallback, useMemo, useState } from "react";
+import { MessageSquareIcon, RefreshCwIcon, XIcon } from "lucide-react";
+import { type ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 
 import { useDemoReplay } from "@/hooks/useDemoReplay";
 import type { ChatUIMessage } from "@/lib/ai/tools";
+import { BYOK_STORAGE_KEY, BYOKBanner } from "@/components/chat/BYOKBanner";
 import { SuggestedPrompts } from "@/components/chat/SuggestedPrompts";
 import { type ChatToolPart, ToolWidget } from "@/components/widgets/registry";
 import { WidgetActionsProvider } from "@/components/widgets/widget-actions";
@@ -78,10 +79,26 @@ export function MessageParts({ message }: { message: ChatUIMessage }) {
 export function Chat() {
   const [rateLimited, setRateLimited] = useState(false);
 
-  // Custom transport so we can detect the 429 (daily limit) and surface the BYOK banner.
+  const [byokKey, setByokKey] = useState<string | null>(null);
+  useEffect(() => {
+    // localStorage isn't available during SSR, so read it after mount.
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time hydration read
+    setByokKey(localStorage.getItem(BYOK_STORAGE_KEY));
+  }, []);
+  const removeByok = () => {
+    localStorage.removeItem(BYOK_STORAGE_KEY);
+    location.reload();
+  };
+
+  // Custom transport: attach the visitor's BYOK key (if any) per request, and detect
+  // the 429 (daily limit) to surface the BYOK banner.
   const transport = useMemo(
     () =>
       new DefaultChatTransport<ChatUIMessage>({
+        headers: (): Record<string, string> => {
+          const key = typeof window === "undefined" ? null : localStorage.getItem(BYOK_STORAGE_KEY);
+          return key ? { "x-byok-key": key } : {};
+        },
         fetch: async (input, init) => {
           const res = await fetch(input as RequestInfo, init);
           if (res.status === 429) setRateLimited(true);
@@ -169,10 +186,15 @@ export function Chat() {
             </p>
           )}
           {isLanding && <SuggestedPrompts onSelect={startRealChat} />}
-          {rateLimited && (
-            <div className="border-primary/40 bg-primary/5 rounded-lg border px-4 py-3 text-sm">
-              You&apos;ve used today&apos;s 10 free messages. Paste your own Gemini key below to
-              continue ↓
+          {rateLimited && !byokKey && <BYOKBanner />}
+          {byokKey && (
+            <div className="text-muted-foreground flex items-center gap-1.5 self-start text-xs">
+              <span className="bg-primary/10 inline-flex items-center gap-1 rounded-full px-2 py-0.5">
+                Using your key
+                <button aria-label="Remove your key" onClick={removeByok} type="button">
+                  <XIcon className="size-3" />
+                </button>
+              </span>
             </div>
           )}
           <PromptInput onSubmit={handleSubmit}>

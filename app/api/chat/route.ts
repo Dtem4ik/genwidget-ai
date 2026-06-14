@@ -1,11 +1,17 @@
 import { convertToModelMessages, stepCountIs, streamText } from "ai";
 
-import { chatModel } from "@/lib/ai/provider";
+import { getChatModel } from "@/lib/ai/provider";
 import { type ChatUIMessage, tools } from "@/lib/ai/tools";
 import { checkRateLimit } from "@/lib/rate-limit";
 
 const clientIp = (req: Request) =>
   req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "127.0.0.1";
+
+// Visitor's own Google AI Studio key (kept only in their browser). Never logged.
+const byokKey = (req: Request) => {
+  const key = req.headers.get("x-byok-key")?.trim();
+  return key && key.startsWith("AIza") ? key : undefined;
+};
 
 const SYSTEM_PROMPT = `You are GenWidget AI, an assistant that answers with interactive
 widgets rendered from your tool calls.
@@ -32,15 +38,20 @@ Rules:
 - For everything else, answer concisely in markdown. Use code blocks for code.`;
 
 export async function POST(req: Request) {
-  const { success } = await checkRateLimit(clientIp(req));
-  if (!success) {
-    return Response.json({ error: "rate_limit", remaining: 0 }, { status: 429 });
+  const key = byokKey(req);
+
+  // BYOK requests run on the visitor's own quota, so they skip our daily limit.
+  if (!key) {
+    const { success } = await checkRateLimit(clientIp(req));
+    if (!success) {
+      return Response.json({ error: "rate_limit", remaining: 0 }, { status: 429 });
+    }
   }
 
   const { messages }: { messages: ChatUIMessage[] } = await req.json();
 
   const result = streamText({
-    model: chatModel,
+    model: getChatModel(key),
     system: SYSTEM_PROMPT,
     messages: await convertToModelMessages(messages),
     tools,

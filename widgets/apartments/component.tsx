@@ -88,8 +88,9 @@ export function ApartmentCard({
   }
 
   // Compact (grid of 2-3): gradient header, details, collapsible floor plan.
+  // h-full so cards in a row stretch to equal height (actions pinned via mt-auto).
   return (
-    <article className="bg-card flex flex-col gap-3 rounded-xl border p-4 sm:p-5">
+    <article className="bg-card flex h-full flex-col gap-3 rounded-xl border p-4 sm:p-5">
       <DomainCard icon={Home} label={apartment.title} />
       <ApartmentMeta apartment={apartment} />
       <FloorPlan rooms={apartment.rooms} />
@@ -135,10 +136,13 @@ export function ApartmentResults({
           // Staggered entrance as cards mount (output-available). Skipped entirely
           // when the user prefers reduced motion.
           return reduceMotion ? (
-            <div key={key}>{card}</div>
+            <div className="h-full" key={key}>
+              {card}
+            </div>
           ) : (
             <motion.div
               animate={{ opacity: 1, y: 0 }}
+              className="h-full"
               initial={{ opacity: 0, y: 16 }}
               key={key}
               transition={{ duration: 0.3, delay: i * 0.08, ease: "easeOut" }}

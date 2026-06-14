@@ -25,6 +25,15 @@
 - 🌗 **Light + dark theme** on every widget, plus mobile layouts.
 - 🔌 **Provider-agnostic** — switch the model in one line; runs on free-tier Gemini today.
 
+## How it stays free
+
+💰 **$0/mo** at any traffic — four layers, cheapest-first ([ADR-005](docs/adr/adr-005-cost-strategy.md)):
+
+- **Auto-demo on landing** — a scripted scenario plays from hardcoded data, so most visitors see the wow with **no API calls**.
+- **10 messages/day per IP** via Upstash Redis (free tier) — caps any single visitor against the model's 500/day pool.
+- **Bring your own key** — past the limit, paste your own free Google AI Studio key; it stays in your browser and runs on your quota.
+- **Response cache** — the suggested prompts are cached 24h and replay instantly.
+
 ## Try it
 
 Open **[pet1.dtem4ik.dev](https://pet1.dtem4ik.dev)** and paste any of these:

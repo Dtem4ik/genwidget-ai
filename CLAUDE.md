@@ -72,7 +72,13 @@ collapsible floor plans, staggered entrance animation.
 
 ## Status
 
-Phases 0–5 done and on prod (pet1.dtem4ik.dev). **All 6 MVP widgets live**:
+Phases 0–6 done and on prod (pet1.dtem4ik.dev). **All 6 MVP widgets live**:
 ApartmentResults, CompareTable, ProductRecommendation (LLM-generated), WeatherCard
 (Open-Meteo), StockCard (CoinGecko/Yahoo), FilterChips (model-controlled UI state).
-Shared EmptyState/ErrorState; widget buttons loop back into the chat. MVP scope complete.
+Shared EmptyState/ErrorState; widget buttons loop back into the chat.
+
+**Economics (phase 6, ADR-005):** auto-demo replay on landing (no API,
+`hooks/useDemoReplay.ts`), per-IP rate limit 10/day (`lib/rate-limit.ts`, Upstash),
+bring-your-own-key (`x-byok-key`, localStorage), response cache for suggested prompts
+(`lib/cache.ts`, 24h). Upstash Redis is optional — features no-op without
+`UPSTASH_REDIS_REST_URL`/`UPSTASH_REDIS_REST_TOKEN`; rate-limit also off in dev.

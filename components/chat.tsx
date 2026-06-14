@@ -3,10 +3,12 @@
 import { useChat } from "@ai-sdk/react";
 import { isStaticToolUIPart } from "ai";
 import { MessageSquareIcon, RefreshCwIcon } from "lucide-react";
+import type { ReactNode } from "react";
 
 import type { ChatUIMessage } from "@/lib/ai/tools";
-import { ToolWidget } from "@/components/widgets/registry";
+import { type ChatToolPart, ToolWidget } from "@/components/widgets/registry";
 import { WidgetActionsProvider } from "@/components/widgets/widget-actions";
+import { WidgetGrid } from "@/components/widgets/WidgetGrid";
 
 import {
   Conversation,
@@ -25,6 +27,51 @@ import {
 } from "@/components/ai-elements/prompt-input";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
+
+/**
+ * Renders a message's parts, grouping consecutive tool widgets into one WidgetGrid
+ * (1 → full width, 2 → two columns, 3+ → three) so multiple results lay out side by
+ * side instead of stacking. Text parts render between widget runs.
+ */
+export function MessageParts({ message }: { message: ChatUIMessage }) {
+  const blocks: ReactNode[] = [];
+  let run: ChatToolPart[] = [];
+
+  const flush = (key: string) => {
+    if (run.length === 0) return;
+    const widgets = run;
+    run = [];
+    blocks.push(
+      <WidgetGrid count={widgets.length} key={key}>
+        {widgets.map((part) => (
+          <ToolWidget key={part.toolCallId} part={part} />
+        ))}
+      </WidgetGrid>,
+    );
+  };
+
+  message.parts.forEach((part, i) => {
+    if (isStaticToolUIPart(part)) {
+      run.push(part as ChatToolPart);
+      return;
+    }
+    flush(`${message.id}-w${i}`);
+    if (part.type === "text") {
+      blocks.push(
+        message.role === "assistant" ? (
+          <MessageResponse key={`${message.id}-${i}`}>{part.text}</MessageResponse>
+        ) : (
+          <span className="whitespace-pre-wrap" key={`${message.id}-${i}`}>
+            {part.text}
+          </span>
+        ),
+      );
+    }
+  });
+  flush(`${message.id}-wend`);
+
+  return <>{blocks}</>;
+}
 
 export function Chat() {
   const { messages, sendMessage, status, error, regenerate, stop } = useChat<ChatUIMessage>();
@@ -49,27 +96,17 @@ export function Chat() {
                 description="Ask anything — soon the answers arrive as live widgets. For now, it talks."
               />
             )}
-            {messages.map((message) => (
-              <Message from={message.role} key={message.id}>
-                <MessageContent>
-                  {message.parts.map((part, i) => {
-                    if (part.type === "text") {
-                      return message.role === "assistant" ? (
-                        <MessageResponse key={`${message.id}-${i}`}>{part.text}</MessageResponse>
-                      ) : (
-                        <span className="whitespace-pre-wrap" key={`${message.id}-${i}`}>
-                          {part.text}
-                        </span>
-                      );
-                    }
-                    if (isStaticToolUIPart(part)) {
-                      return <ToolWidget key={part.toolCallId} part={part} />;
-                    }
-                    return null;
-                  })}
-                </MessageContent>
-              </Message>
-            ))}
+            {messages.map((message) => {
+              // Widgets need the full message width; the default bubble is w-fit.
+              const hasWidget = message.parts.some(isStaticToolUIPart);
+              return (
+                <Message from={message.role} key={message.id}>
+                  <MessageContent className={hasWidget ? "w-full" : undefined}>
+                    <MessageParts message={message} />
+                  </MessageContent>
+                </Message>
+              );
+            })}
             {status === "submitted" && (
               <div className="text-muted-foreground flex items-center gap-2 text-sm">
                 <Spinner className="size-4" />

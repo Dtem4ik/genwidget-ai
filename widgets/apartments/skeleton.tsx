@@ -6,7 +6,7 @@ function CardSkeleton() {
   // Mirrors the real ApartmentCard layout slot-for-slot so nothing shifts or resizes
   // when the photo loads and the data swaps in.
   return (
-    <div className="bg-card flex flex-col gap-3 rounded-xl border p-4">
+    <div className="bg-card flex flex-col gap-3 rounded-xl border p-4 sm:p-5">
       {/* Photo — same h-40 as the real photo */}
       <div className="bg-muted h-40 w-full animate-pulse rounded-lg" />
       <div className="flex flex-col gap-0.5">

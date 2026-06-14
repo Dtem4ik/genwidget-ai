@@ -1,8 +1,9 @@
 export function StockCardSkeleton() {
+  // Mirrors the loaded StockCard shell (full width, header row, price + sparkline row).
   return (
     <section
       aria-busy="true"
-      className="bg-card flex w-full max-w-sm flex-col gap-3 rounded-xl border p-4"
+      className="bg-card flex w-full flex-col gap-4 rounded-xl border p-4 sm:p-5"
       data-testid="stock-skeleton"
     >
       <div className="flex items-center gap-3">
@@ -12,8 +13,13 @@ export function StockCardSkeleton() {
           <div className="bg-muted h-3 w-12 animate-pulse rounded" />
         </div>
       </div>
-      <div className="bg-muted h-7 w-32 animate-pulse rounded" />
-      <div className="bg-muted h-[50px] w-full animate-pulse rounded" />
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
+        <div className="flex flex-col gap-2 sm:w-2/5">
+          <div className="bg-muted h-7 w-32 animate-pulse rounded" />
+          <div className="bg-muted h-5 w-24 animate-pulse rounded-full" />
+        </div>
+        <div className="bg-muted h-[50px] flex-1 animate-pulse rounded" />
+      </div>
     </section>
   );
 }

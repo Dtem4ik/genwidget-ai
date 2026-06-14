@@ -3,8 +3,9 @@
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, isStaticToolUIPart } from "ai";
 import { MessageSquareIcon, RefreshCwIcon } from "lucide-react";
-import { type ReactNode, useMemo, useState } from "react";
+import { type ReactNode, useCallback, useMemo, useState } from "react";
 
+import { useDemoReplay } from "@/hooks/useDemoReplay";
 import type { ChatUIMessage } from "@/lib/ai/tools";
 import { SuggestedPrompts } from "@/components/chat/SuggestedPrompts";
 import { type ChatToolPart, ToolWidget } from "@/components/widgets/registry";
@@ -90,16 +91,34 @@ export function Chat() {
     [],
   );
 
-  const { messages, sendMessage, status, error, regenerate, stop } = useChat<ChatUIMessage>({
-    transport,
-  });
+  const { messages, sendMessage, setMessages, status, error, regenerate, stop } =
+    useChat<ChatUIMessage>({ transport });
+
+  // Landing demo: replays a scripted scenario (no API) until the user interacts.
+  const [demoPlaying, setDemoPlaying] = useState(true);
+  const [isLanding, setIsLanding] = useState(true);
+  const onDemoFinish = useCallback(() => setDemoPlaying(false), []);
+  useDemoReplay({ play: demoPlaying, setMessages, onFinish: onDemoFinish });
+
+  // Any real interaction clears the throwaway demo and starts a fresh conversation.
+  const startRealChat = useCallback(
+    (text: string) => {
+      if (isLanding) {
+        setIsLanding(false);
+        setDemoPlaying(false);
+        setMessages([]);
+      }
+      sendMessage({ text });
+    },
+    [isLanding, sendMessage, setMessages],
+  );
 
   const handleSubmit = (message: PromptInputMessage) => {
     const text = message.text.trim();
     if (!text) {
       return;
     }
-    sendMessage({ text });
+    startRealChat(text);
   };
 
   return (
@@ -144,7 +163,12 @@ export function Chat() {
           <ConversationScrollButton />
         </Conversation>
         <div className="flex flex-col gap-2 px-4 pb-4">
-          {messages.length === 0 && <SuggestedPrompts onSelect={(text) => sendMessage({ text })} />}
+          {demoPlaying && (
+            <p className="text-muted-foreground text-center text-xs">
+              Demo mode — type anything to start your own chat
+            </p>
+          )}
+          {isLanding && <SuggestedPrompts onSelect={startRealChat} />}
           {rateLimited && (
             <div className="border-primary/40 bg-primary/5 rounded-lg border px-4 py-3 text-sm">
               You&apos;ve used today&apos;s 10 free messages. Paste your own Gemini key below to

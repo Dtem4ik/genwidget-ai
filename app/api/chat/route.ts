@@ -1,7 +1,9 @@
-import { convertToModelMessages, stepCountIs, streamText } from "ai";
+import { convertToModelMessages, stepCountIs, streamText, UI_MESSAGE_STREAM_HEADERS } from "ai";
+import { after } from "next/server";
 
 import { getChatModel } from "@/lib/ai/provider";
 import { type ChatUIMessage, tools } from "@/lib/ai/tools";
+import { getCachedStream, isCacheablePrompt, setCachedStream } from "@/lib/cache";
 import { checkRateLimit } from "@/lib/rate-limit";
 
 const clientIp = (req: Request) =>
@@ -11,6 +13,12 @@ const clientIp = (req: Request) =>
 const byokKey = (req: Request) => {
   const key = req.headers.get("x-byok-key")?.trim();
   return key && key.startsWith("AIza") ? key : undefined;
+};
+
+const lastUserText = (messages: ChatUIMessage[]) => {
+  const last = messages.filter((m) => m.role === "user").at(-1);
+  const part = last?.parts.find((p) => p.type === "text");
+  return part && "text" in part ? part.text : "";
 };
 
 const SYSTEM_PROMPT = `You are GenWidget AI, an assistant that answers with interactive
@@ -39,6 +47,14 @@ Rules:
 
 export async function POST(req: Request) {
   const key = byokKey(req);
+  const { messages }: { messages: ChatUIMessage[] } = await req.json();
+  const prompt = lastUserText(messages);
+
+  // Cache hit: replay the stored stream instantly. Doesn't consume the daily quota.
+  const cached = await getCachedStream(prompt);
+  if (cached) {
+    return new Response(cached, { headers: UI_MESSAGE_STREAM_HEADERS });
+  }
 
   // BYOK requests run on the visitor's own quota, so they skip our daily limit.
   if (!key) {
@@ -48,8 +64,6 @@ export async function POST(req: Request) {
     }
   }
 
-  const { messages }: { messages: ChatUIMessage[] } = await req.json();
-
   const result = streamText({
     model: getChatModel(key),
     system: SYSTEM_PROMPT,
@@ -58,5 +72,18 @@ export async function POST(req: Request) {
     stopWhen: stepCountIs(3),
   });
 
-  return result.toUIMessageStreamResponse();
+  const response = result.toUIMessageStreamResponse();
+
+  // Cache the response for suggested prompts: tee the stream, send one branch to the
+  // client live, capture the other after the response completes.
+  if (response.body && isCacheablePrompt(prompt)) {
+    const [toClient, toCache] = response.body.tee();
+    after(async () => {
+      const body = await new Response(toCache).text();
+      await setCachedStream(prompt, body);
+    });
+    return new Response(toClient, { headers: response.headers });
+  }
+
+  return response;
 }

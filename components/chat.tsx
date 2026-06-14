@@ -1,9 +1,9 @@
 "use client";
 
 import { useChat } from "@ai-sdk/react";
-import { isStaticToolUIPart } from "ai";
+import { DefaultChatTransport, isStaticToolUIPart } from "ai";
 import { MessageSquareIcon, RefreshCwIcon } from "lucide-react";
-import type { ReactNode } from "react";
+import { type ReactNode, useMemo, useState } from "react";
 
 import type { ChatUIMessage } from "@/lib/ai/tools";
 import { type ChatToolPart, ToolWidget } from "@/components/widgets/registry";
@@ -74,7 +74,24 @@ export function MessageParts({ message }: { message: ChatUIMessage }) {
 }
 
 export function Chat() {
-  const { messages, sendMessage, status, error, regenerate, stop } = useChat<ChatUIMessage>();
+  const [rateLimited, setRateLimited] = useState(false);
+
+  // Custom transport so we can detect the 429 (daily limit) and surface the BYOK banner.
+  const transport = useMemo(
+    () =>
+      new DefaultChatTransport<ChatUIMessage>({
+        fetch: async (input, init) => {
+          const res = await fetch(input as RequestInfo, init);
+          if (res.status === 429) setRateLimited(true);
+          return res;
+        },
+      }),
+    [],
+  );
+
+  const { messages, sendMessage, status, error, regenerate, stop } = useChat<ChatUIMessage>({
+    transport,
+  });
 
   const handleSubmit = (message: PromptInputMessage) => {
     const text = message.text.trim();
@@ -125,7 +142,13 @@ export function Chat() {
           </ConversationContent>
           <ConversationScrollButton />
         </Conversation>
-        <div className="px-4 pb-4">
+        <div className="flex flex-col gap-2 px-4 pb-4">
+          {rateLimited && (
+            <div className="border-primary/40 bg-primary/5 rounded-lg border px-4 py-3 text-sm">
+              You&apos;ve used today&apos;s 10 free messages. Paste your own Gemini key below to
+              continue ↓
+            </div>
+          )}
           <PromptInput onSubmit={handleSubmit}>
             <PromptInputBody>
               <PromptInputTextarea placeholder="Ask anything…" />

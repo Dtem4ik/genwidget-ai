@@ -14,7 +14,9 @@ export const DEMO_SCRIPT: DemoExchange[] = [
     user: "show me 2-bedroom apartments in Tel Aviv",
     toolName: "showApartments",
     toolCallId: "demo-apartments",
-    input: { apartments: [] },
+    // 3 stub entries so the streaming skeleton renders the same count it resolves to
+    // (3 cards) — no second layout/animation pass when the data swaps in.
+    input: { apartments: [{}, {}, {}] },
     output: {
       apartments: [
         {

@@ -1,5 +1,7 @@
 import type { DeepPartial } from "ai";
 
+import { WidgetGrid } from "@/components/widgets/WidgetGrid";
+
 import type { ShowApartmentsInput } from "./schema";
 
 function CardSkeleton() {
@@ -49,11 +51,13 @@ export function ApartmentResultsSkeleton({ input }: { input?: DeepPartial<ShowAp
       data-testid="apartments-skeleton"
     >
       <header className="text-muted-foreground text-sm">Finding apartments…</header>
-      <div className="grid gap-3 sm:grid-cols-2">
+      {/* Use the same WidgetGrid as the loaded results so the column count matches
+          (3 skeletons → 3 columns on desktop, not 2 + 1). */}
+      <WidgetGrid count={cardCount}>
         {Array.from({ length: cardCount }, (_, i) => (
           <CardSkeleton key={i} />
         ))}
-      </div>
+      </WidgetGrid>
     </section>
   );
 }

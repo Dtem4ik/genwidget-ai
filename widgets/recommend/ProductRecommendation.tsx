@@ -3,6 +3,7 @@
 import { ArrowUpRightIcon } from "lucide-react";
 
 import { DomainCard, iconForCategory } from "@/components/widgets/domain-card";
+import { SpecList } from "@/components/widgets/primitives";
 import { useWidgetActions } from "@/components/widgets/widget-actions";
 import { Button } from "@/components/ui/button";
 
@@ -52,16 +53,7 @@ export function ProductRecommendation({
           </div>
         </div>
 
-        {product.specs.length > 0 && (
-          <dl className="grid grid-cols-2 gap-x-4 gap-y-2 border-t pt-3 sm:grid-cols-3">
-            {product.specs.map((spec) => (
-              <div className="flex flex-col" key={spec.label}>
-                <dt className="text-muted-foreground text-xs">{spec.label}</dt>
-                <dd className="text-[13px]">{spec.value}</dd>
-              </div>
-            ))}
-          </dl>
-        )}
+        <SpecList className="border-t pt-3" specs={product.specs} />
       </div>
 
       {/* Alternatives */}

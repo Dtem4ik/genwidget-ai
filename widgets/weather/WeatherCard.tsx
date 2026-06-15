@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 
 import { DomainCard } from "@/components/widgets/domain-card";
+import { WidgetCard } from "@/components/widgets/primitives";
 import { ErrorState } from "@/components/widgets/widget-states";
 import { useWidgetActions } from "@/components/widgets/widget-actions";
 
@@ -55,10 +56,7 @@ export function WeatherCard({
   const unit = output.units === "fahrenheit" ? "°F" : "°C";
 
   return (
-    <section
-      className="bg-card flex w-full flex-col gap-4 rounded-xl border p-4 sm:p-5"
-      data-testid="weather-results"
-    >
+    <WidgetCard className="gap-4" data-testid="weather-results">
       <DomainCard icon={weatherIcon(output.weatherCode)} label={`Weather in ${output.city}`} />
       <div className="flex flex-col items-center gap-1 text-center">
         <p className="text-muted-foreground text-[13px]">{output.city}</p>
@@ -96,6 +94,6 @@ export function WeatherCard({
       >
         Powered by Open-Meteo
       </a>
-    </section>
+    </WidgetCard>
   );
 }

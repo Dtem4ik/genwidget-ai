@@ -3,6 +3,7 @@
 import { SlidersHorizontalIcon } from "lucide-react";
 import { useState } from "react";
 
+import { WidgetCard } from "@/components/widgets/primitives";
 import { useWidgetActions } from "@/components/widgets/widget-actions";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -26,10 +27,7 @@ export function FilterChips({ output }: { input: SetFiltersInput; output: SetFil
   const activeCount = filters.filter((f) => f.active).length;
 
   return (
-    <section
-      className="bg-card flex w-full flex-col gap-3 rounded-xl border p-4 sm:p-5"
-      data-testid="filters-results"
-    >
+    <WidgetCard className="gap-3" data-testid="filters-results">
       <p className="text-muted-foreground flex items-center gap-1.5 text-[13px]">
         <SlidersHorizontalIcon aria-hidden className="size-4" />
         {output.context}
@@ -67,6 +65,6 @@ export function FilterChips({ output }: { input: SetFiltersInput; output: SetFil
           Apply {activeCount > 0 ? `(${activeCount})` : ""}
         </Button>
       </div>
-    </section>
+    </WidgetCard>
   );
 }

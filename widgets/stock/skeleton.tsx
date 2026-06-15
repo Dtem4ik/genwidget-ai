@@ -1,11 +1,9 @@
+import { WidgetCard } from "@/components/widgets/primitives";
+
 export function StockCardSkeleton() {
   // Mirrors the loaded StockCard shell (full width, header row, price + sparkline row).
   return (
-    <section
-      aria-busy="true"
-      className="bg-card flex w-full flex-col gap-4 rounded-xl border p-4 sm:p-5"
-      data-testid="stock-skeleton"
-    >
+    <WidgetCard aria-busy="true" className="gap-4" data-testid="stock-skeleton">
       <div className="flex items-center gap-3">
         <div className="bg-muted size-12 animate-pulse rounded-lg" />
         <div className="flex flex-col gap-1">
@@ -20,6 +18,6 @@ export function StockCardSkeleton() {
         </div>
         <div className="bg-muted h-[50px] flex-1 animate-pulse rounded" />
       </div>
-    </section>
+    </WidgetCard>
   );
 }

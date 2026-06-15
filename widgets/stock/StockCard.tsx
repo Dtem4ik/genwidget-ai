@@ -2,6 +2,7 @@
 
 import { TrendingDownIcon, TrendingUpIcon } from "lucide-react";
 
+import { WidgetCard } from "@/components/widgets/primitives";
 import { ErrorState } from "@/components/widgets/widget-states";
 import { useWidgetActions } from "@/components/widgets/widget-actions";
 import { cn } from "@/lib/utils";
@@ -79,10 +80,7 @@ export function StockCard({
   );
 
   return (
-    <section
-      className="bg-card flex w-full flex-col gap-4 rounded-xl border p-4 sm:p-5"
-      data-testid="stock-results"
-    >
+    <WidgetCard className="gap-4" data-testid="stock-results">
       <div className="flex items-center gap-3">
         <div
           className={cn(
@@ -112,6 +110,6 @@ export function StockCard({
       <p className="text-muted-foreground text-[10px]">
         Source: {output.source === "crypto" ? "CoinGecko" : "Yahoo Finance"} · 7-day trend
       </p>
-    </section>
+    </WidgetCard>
   );
 }

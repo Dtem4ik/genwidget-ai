@@ -2,7 +2,7 @@
 
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, isStaticToolUIPart } from "ai";
-import { MessageSquareIcon, RefreshCwIcon, XIcon } from "lucide-react";
+import { CopyIcon, MessageSquareIcon, RefreshCwIcon, XIcon } from "lucide-react";
 import { type ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 
 import { useDemoReplay } from "@/hooks/useDemoReplay";
@@ -19,7 +19,13 @@ import {
   ConversationEmptyState,
   ConversationScrollButton,
 } from "@/components/ai-elements/conversation";
-import { Message, MessageContent, MessageResponse } from "@/components/ai-elements/message";
+import {
+  Message,
+  MessageAction,
+  MessageActions,
+  MessageContent,
+  MessageResponse,
+} from "@/components/ai-elements/message";
 import {
   PromptInput,
   PromptInputBody,
@@ -39,10 +45,15 @@ import { Spinner } from "@/components/ui/spinner";
 export function MessageParts({ message }: { message: ChatUIMessage }) {
   const blocks: ReactNode[] = [];
   let run: ChatToolPart[] = [];
+  // Key each widget run by the index it STARTS at, not the part that ends it. Appending
+  // a trailing text part later must not change the key, or React remounts the WidgetGrid
+  // and the widget entrance animation fires a second time.
+  let runStart = 0;
 
-  const flush = (key: string) => {
+  const flush = () => {
     if (run.length === 0) return;
     const widgets = run;
+    const key = `${message.id}-w${runStart}`;
     run = [];
     blocks.push(
       <WidgetGrid count={widgets.length} key={key}>
@@ -55,14 +66,20 @@ export function MessageParts({ message }: { message: ChatUIMessage }) {
 
   message.parts.forEach((part, i) => {
     if (isStaticToolUIPart(part)) {
+      if (run.length === 0) runStart = i;
       run.push(part as ChatToolPart);
       return;
     }
-    flush(`${message.id}-w${i}`);
+    flush();
+    // After flush, any pending widget run is now in `blocks`; give the reply text that
+    // follows a widget a little breathing room.
+    const afterWidget = blocks.length > 0;
     if (part.type === "text") {
       blocks.push(
         message.role === "assistant" ? (
-          <MessageResponse key={`${message.id}-${i}`}>{part.text}</MessageResponse>
+          <MessageResponse className={afterWidget ? "mt-2" : undefined} key={`${message.id}-${i}`}>
+            {part.text}
+          </MessageResponse>
         ) : (
           <span className="whitespace-pre-wrap" key={`${message.id}-${i}`}>
             {part.text}
@@ -71,9 +88,17 @@ export function MessageParts({ message }: { message: ChatUIMessage }) {
       );
     }
   });
-  flush(`${message.id}-wend`);
+  flush();
 
   return <>{blocks}</>;
+}
+
+/** Flattens a message's text parts (for the copy action). */
+function messageText(message: ChatUIMessage): string {
+  return message.parts
+    .filter((part) => part.type === "text")
+    .map((part) => (part as { text: string }).text)
+    .join("\n\n");
 }
 
 export function Chat() {
@@ -89,6 +114,23 @@ export function Chat() {
     localStorage.removeItem(BYOK_STORAGE_KEY);
     location.reload();
   };
+
+  // Type-to-focus: start typing anywhere (when nothing editable is focused) and the
+  // chat input grabs focus, so the keystroke lands in it — like ChatGPT/Claude.
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.metaKey || e.ctrlKey || e.altKey || e.key.length !== 1) return;
+      const el = document.activeElement as HTMLElement | null;
+      const tag = el?.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || el?.isContentEditable) {
+        return;
+      }
+      const input = document.querySelector<HTMLTextAreaElement>('textarea[name="message"]');
+      input?.focus();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
 
   // Custom transport: attach the visitor's BYOK key (if any) per request, and detect
   // the 429 (daily limit) to surface the BYOK banner.
@@ -140,7 +182,7 @@ export function Chat() {
 
   return (
     <WidgetActionsProvider ask={(text) => sendMessage({ text })}>
-      <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col">
+      <div className="mx-auto flex w-full max-w-4xl flex-1 flex-col">
         <Conversation>
           <ConversationContent>
             {messages.length === 0 && (
@@ -153,11 +195,27 @@ export function Chat() {
             {messages.map((message) => {
               // Widgets need the full message width; the default bubble is w-fit.
               const hasWidget = message.parts.some(isStaticToolUIPart);
+              // Action row only in a real conversation, not on the scripted landing demo.
+              const showActions = message.role === "assistant" && !isLanding;
               return (
                 <Message from={message.role} key={message.id}>
                   <MessageContent className={hasWidget ? "w-full" : undefined}>
                     <MessageParts message={message} />
                   </MessageContent>
+                  {showActions && (
+                    <MessageActions className="opacity-0 transition-opacity group-focus-within:opacity-100 group-hover:opacity-100">
+                      <MessageAction
+                        label="Copy message"
+                        onClick={() => navigator.clipboard?.writeText(messageText(message))}
+                        tooltip="Copy"
+                      >
+                        <CopyIcon aria-hidden className="size-3.5" />
+                      </MessageAction>
+                      <MessageAction label="Regenerate response" onClick={() => regenerate()} tooltip="Regenerate">
+                        <RefreshCwIcon aria-hidden className="size-3.5" />
+                      </MessageAction>
+                    </MessageActions>
+                  )}
                 </Message>
               );
             })}
@@ -182,7 +240,7 @@ export function Chat() {
           </ConversationContent>
           <ConversationScrollButton />
         </Conversation>
-        <div className="flex flex-col gap-2 px-4 pb-4">
+        <div className="bg-background sticky bottom-0 flex flex-col gap-2 px-4 pt-2 pb-5">
           {demoPlaying && (
             <p className="text-muted-foreground text-center text-xs">
               Demo mode — type anything to start your own chat
@@ -207,13 +265,20 @@ export function Chat() {
           )}
           <PromptInput onSubmit={handleSubmit}>
             <PromptInputBody>
-              <PromptInputTextarea aria-label="Message" placeholder="Ask anything…" />
+              <PromptInputTextarea
+                aria-label="Message"
+                className="min-h-[64px] px-4 pt-4 pb-2"
+                placeholder="Ask anything…"
+              />
             </PromptInputBody>
             <PromptInputFooter>
               <div />
               <PromptInputSubmit onStop={stop} status={status} />
             </PromptInputFooter>
           </PromptInput>
+          <p className="text-muted-foreground/80 text-center text-xs">
+            genwidget-ai is a demo — AI can make mistakes.
+          </p>
         </div>
       </div>
     </WidgetActionsProvider>

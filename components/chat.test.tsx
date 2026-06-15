@@ -55,4 +55,20 @@ describe("MessageParts grouping", () => {
     const grid = renderParts(3).querySelector(".grid")!;
     expect(grid.className).toContain("lg:grid-cols-3");
   });
+
+  it("renders trailing reply text after a widget in a single grid", () => {
+    const message = {
+      id: "m2",
+      role: "assistant",
+      parts: [weatherPart("call-0"), { type: "text", text: "Here you go." }],
+    } as unknown as ChatUIMessage;
+    const { container, getByText } = render(
+      <WidgetActionsProvider ask={() => {}}>
+        <MessageParts message={message} />
+      </WidgetActionsProvider>,
+    );
+    // One widget grid, plus the reply text below it (no second grid / remount).
+    expect(container.querySelectorAll(".grid")).toHaveLength(1);
+    expect(getByText("Here you go.")).toBeTruthy();
+  });
 });

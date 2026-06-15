@@ -31,9 +31,19 @@ Rules that make packs work well:
 - `component.tsx`: must include an empty state (shared `EmptyState`/`ErrorState` from
   `components/widgets/widget-states.tsx`). Both themes (use theme tokens: `bg-card`,
   `text-muted-foreground`, …) and mobile layout are part of done.
+- **Shared primitives (`components/widgets/primitives.tsx`):** render a self-contained
+  card through `<WidgetCard>` (it owns the shell classes `w-full p-4 sm:p-5 rounded-xl
+border bg-card` — the skeleton must use it too so the two can't drift). Render a
+  `{label,value}[]` spec map with `<SpecList>`. Pick the photo-stand-in icon with
+  `iconForCategory` from `components/widgets/domain-card.tsx` (gradient + icon, no stock
+  photos — ADR-004).
 - **Layout:** if the widget renders a list, wrap the items in
   `<WidgetGrid count={items.length}>` — it handles responsive columns. A single-item
   widget renders full-width; design that layout (don't just stretch a narrow card).
+- **Accessibility (WCAG 2.1 AA — ADR-006):** decorative icons get `aria-hidden`;
+  icon-only buttons get an `aria-label`; streaming skeletons get `aria-busy`; interactive
+  controls are keyboard-operable with a visible `focus-visible` ring in both themes;
+  contrast ≥ 4.5:1; never rely on color alone (pair red/green with a sign or label).
 
 ## 2. Register the tool
 
@@ -72,10 +82,17 @@ tool, and that the widget shows the results (so the model doesn't repeat them as
 ## 5. Test and verify
 
 ```
-pnpm test        # component states
+pnpm test        # component states (Vitest)
 pnpm typecheck   # registry/props consistency
-pnpm dev         # ask the demo prompt in the chat, check both themes + mobile
+pnpm e2e         # Playwright happy-path (mocked chat) — see below
+pnpm dev         # ask the demo prompt in the chat, check both themes + mobile + keyboard
 ```
+
+E2E (`e2e/`, Playwright, chromium) never calls the real LLM: `/api/chat` is mocked with
+a hand-built UI message stream (`e2e/mock-chat.ts`) so a prompt deterministically renders
+a known widget (ADR-006). It runs against the production build, so `pnpm e2e` does
+`next build && next start` for you locally. If your widget adds a happy-path worth
+locking in, add a spec with role/label selectors (not brittle CSS).
 
 Add the widget's demo prompt to the PR description. Log tool-calling quality
 findings (did the model pick the tool? correct args?) in `docs/models.md`.
@@ -83,7 +100,9 @@ findings (did the model pick the tool? correct args?) in `docs/models.md`.
 ## Checklist (DoD per widget)
 
 - [ ] skeleton + data + empty + error states
-- [ ] light + dark themes, mobile layout
+- [ ] light + dark themes, mobile layout (no horizontal overflow at 375px, 44px tap targets)
+- [ ] accessible: keyboard-operable, focus-visible ring, decorative icons `aria-hidden`,
+      `aria-busy` skeleton, contrast ≥ 4.5:1, not color-only (ADR-006)
 - [ ] component test covering skeleton / data / error
 - [ ] `execute()` is a zod passthrough (or a live real-time API call); no mock catalog
 - [ ] system prompt rule added; demo prompt verified end-to-end

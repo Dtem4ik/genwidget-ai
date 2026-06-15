@@ -61,15 +61,23 @@ the weather and price widgets use real free APIs.
 
 ## Architecture
 
+```mermaid
+flowchart TD
+    U["User message"] --> API["/api/chat<br/>streamText + tools"]
+    API --> LLM["LLM picks a tool<br/>and streams its arguments<br/>(zod schema, partial JSON)"]
+    LLM --> EX{"execute()"}
+    EX -- "LLM-generated domains" --> PASS["zod passthrough<br/>(args = the data) · ADR-003"]
+    EX -- "real-time domains" --> LIVE["fetch a free keyless API<br/>(8s timeout)"]
+    PASS --> STREAM["AI SDK streams message.parts"]
+    LIVE --> STREAM
+    STREAM --> UC["useChat() on the client"]
+    UC --> REG["widget registry<br/>toolName → component"]
+    REG --> W["skeleton → fields fill in → interactive widget"]
+    W -- "button → sendMessage" --> U
 ```
-user message
-  └─> /api/chat (streamText + tools)
-        └─> LLM picks a tool and streams its arguments (zod schema)
-              └─> useChat() on the client receives message.parts
-                    └─> widget registry maps toolName -> React component
-                          └─> skeleton -> fields fill in -> interactive widget
-                                └─> widget buttons send a new turn back to the model
-```
+
+Full diagrams (request flow, streaming states, $0/mo layers) in
+**[docs/architecture.md](docs/architecture.md)**.
 
 **Data pattern ([ADR-003](docs/adr/adr-003-llm-generated-data.md)):** for domains with no
 free real-time API, the model generates the data as the tool-call arguments and

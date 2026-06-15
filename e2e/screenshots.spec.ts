@@ -63,6 +63,26 @@ async function shoot(
   await el.screenshot({ path: `docs/screenshots/${scene.name}-${theme}${suffix}.png` });
 }
 
+// GitHub social preview card (1280×640). Self-contained HTML, no app server needed.
+test("shot: social-preview", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 640 });
+  await page.setContent(`<!doctype html><html><body style="margin:0">
+    <div style="width:1280px;height:640px;box-sizing:border-box;
+      display:flex;flex-direction:column;justify-content:center;gap:28px;padding:96px;
+      background:radial-gradient(900px 600px at 78% 18%, #2a2a2a 0%, #0d0d0d 60%);
+      color:#fafafa;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+      <div style="font-size:30px;letter-spacing:.18em;text-transform:uppercase;color:#a1a1a1">GenWidget&nbsp;AI</div>
+      <div style="font-size:74px;line-height:1.05;font-weight:700;max-width:1000px">
+        AI chat that answers with live React&nbsp;widgets.</div>
+      <div style="font-size:30px;color:#c4c4c4;max-width:940px">
+        Streaming tool-calls render apartments, comparisons, weather &amp; stocks as real,
+        interactive widgets — not text.</div>
+      <div style="font-size:24px;color:#8f8f8f;margin-top:8px">
+        Next.js · TypeScript · Vercel AI SDK · zod · $0/mo · pet1.dtem4ik.dev</div>
+    </div></body></html>`);
+  await page.locator("div").first().screenshot({ path: "docs/social-preview.png" });
+});
+
 for (const scene of SCENES) {
   for (const theme of ["light", "dark"] as const) {
     test(`shot: ${scene.name} ${theme}`, async ({ page }) => {

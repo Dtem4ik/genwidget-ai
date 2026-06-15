@@ -18,6 +18,8 @@ stocks) instead of text. Demo at pet1.dtem4ik.dev.
 - `pnpm test` — vitest (component tests)
 - `pnpm e2e` — playwright e2e (chromium; mocks `/api/chat`, runs against the prod build,
   so it does `next build && next start` for you). `pnpm e2e:ui` for the UI runner.
+- `pnpm screenshots` — regenerate `docs/screenshots/` (Playwright, mocked chat, both
+  themes). Dev tool only — env-guarded (`SCREENSHOTS=1`) so CI's `pnpm e2e` skips it.
 
 ## Architecture
 

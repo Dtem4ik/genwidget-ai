@@ -15,7 +15,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "e2e": "playwright test",
-    "e2e:ui": "playwright test --ui"
+    "e2e:ui": "playwright test --ui",
+    "screenshots": "SCREENSHOTS=1 playwright test screenshots.spec.ts"
   },
   "dependencies": {
     "@ai-sdk/google": "^3.0.81",

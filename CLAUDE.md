@@ -88,7 +88,7 @@ collapsible floor plans, staggered entrance animation.
 
 ## Status
 
-Phases 0–7 done and on prod (pet1.dtem4ik.dev). **All 6 MVP widgets live**:
+Phases 0–8 done and on prod (pet1.dtem4ik.dev) — MVP complete, v1.0.0. **All 6 MVP widgets live**:
 ApartmentResults, CompareTable, ProductRecommendation (LLM-generated), WeatherCard
 (Open-Meteo), StockCard (CoinGecko/Yahoo), FilterChips (model-controlled UI state).
 Shared EmptyState/ErrorState; widget buttons loop back into the chat.
@@ -104,3 +104,14 @@ sweep; deterministic Playwright e2e (`e2e/`, chromium) that mocks the LLM via a 
 UI message stream (`e2e/mock-chat.ts`) — never calls the real model. Playwright runs in CI
 after the build, browsers cached. Shared widget primitives extracted to
 `components/widgets/primitives.tsx`.
+
+**Packaging (phase 8):** README front door + Mermaid architecture diagram
+(`docs/architecture.md`), generated widget screenshots (`pnpm screenshots`,
+`docs/screenshots/`), ADR index, repo metadata, v1.0.0 release.
+
+**UI polish (interim, before phase 9):** header + chat share `max-w-4xl`; Geist applied
+app-wide via next/font (tokens wired to `--font-geist-*`); chat input pinned to the bottom,
+padded, rounded with a focus shadow, plus a disclaimer line; type-to-focus (start typing →
+input focuses); copy/regenerate action row under assistant messages (hover + keyboard focus);
+landing demo plays the widget entrance animation once (stable `WidgetGrid` keys keyed by
+run-start index — don't key widget runs by a trailing part's index, it remounts them).

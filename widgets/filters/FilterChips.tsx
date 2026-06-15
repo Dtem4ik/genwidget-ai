@@ -58,7 +58,12 @@ export function FilterChips({ output }: { input: SetFiltersInput; output: SetFil
             </button>
           ))}
         </div>
-        <Button className="w-fit shrink-0" disabled={activeCount === 0} onClick={apply} size="sm">
+        <Button
+          className="min-h-11 w-fit shrink-0 sm:min-h-9"
+          disabled={activeCount === 0}
+          onClick={apply}
+          size="sm"
+        >
           Apply {activeCount > 0 ? `(${activeCount})` : ""}
         </Button>
       </div>

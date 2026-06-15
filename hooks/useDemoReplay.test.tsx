@@ -32,10 +32,9 @@ describe("useDemoReplay", () => {
     const setMessages = vi.fn();
     const onFinish = vi.fn();
 
-    const { rerender } = renderHook(
-      ({ play }) => useDemoReplay({ play, setMessages, onFinish }),
-      { initialProps: { play: true } },
-    );
+    const { rerender } = renderHook(({ play }) => useDemoReplay({ play, setMessages, onFinish }), {
+      initialProps: { play: true },
+    });
 
     await vi.advanceTimersByTimeAsync(1600); // partway into the first exchange
     rerender({ play: false });

@@ -211,7 +211,11 @@ export function Chat() {
                       >
                         <CopyIcon aria-hidden className="size-3.5" />
                       </MessageAction>
-                      <MessageAction label="Regenerate response" onClick={() => regenerate()} tooltip="Regenerate">
+                      <MessageAction
+                        label="Regenerate response"
+                        onClick={() => regenerate()}
+                        tooltip="Regenerate"
+                      >
                         <RefreshCwIcon aria-hidden className="size-3.5" />
                       </MessageAction>
                     </MessageActions>

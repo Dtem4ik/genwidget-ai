@@ -19,7 +19,8 @@ export default defineConfig({
   },
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
   webServer: {
-    command: "pnpm build && pnpm start",
+    // In CI the build is its own pipeline step, so just serve it; locally, build first.
+    command: process.env.CI ? "pnpm start" : "pnpm build && pnpm start",
     url: "http://localhost:3000",
     reuseExistingServer: !process.env.CI,
     timeout: 180_000,

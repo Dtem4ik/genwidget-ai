@@ -47,7 +47,7 @@ export function ProductRecommendation({
               variant="outline"
             >
               Why this pick?
-              <ArrowUpRightIcon className="size-3" />
+              <ArrowUpRightIcon aria-hidden className="size-3" />
             </Button>
           </div>
         </div>
@@ -84,7 +84,7 @@ export function ProductRecommendation({
                   variant="ghost"
                 >
                   Tell me more
-                  <ArrowUpRightIcon className="size-3" />
+                  <ArrowUpRightIcon aria-hidden className="size-3" />
                 </Button>
               </div>
             ))}

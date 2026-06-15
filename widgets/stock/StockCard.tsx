@@ -29,10 +29,10 @@ export function Sparkline({ values, up }: { values: number[]; up: boolean }) {
     .join(" ");
   return (
     <svg
+      aria-hidden
       className="w-full"
       height={h}
       preserveAspectRatio="none"
-      role="img"
       viewBox={`0 0 ${w} ${h}`}
     >
       <polyline
@@ -68,10 +68,11 @@ export function StockCard({
       className={cn(
         "w-fit rounded-full px-2 py-0.5 text-xs font-medium tabular-nums",
         up
-          ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400"
-          : "bg-red-500/15 text-red-600 dark:text-red-400",
+          ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-400"
+          : "bg-red-500/15 text-red-700 dark:text-red-400",
       )}
     >
+      <span className="sr-only">{up ? "Up " : "Down "}</span>
       {up ? "+" : ""}
       {output.changePercent.toFixed(2)}% 24h
     </span>
@@ -89,7 +90,7 @@ export function StockCard({
             up ? "bg-emerald-500/10 text-emerald-500" : "bg-red-500/10 text-red-500",
           )}
         >
-          <TrendIcon className="size-6" />
+          <TrendIcon aria-hidden className="size-6" />
         </div>
         <div>
           <p className="text-[15px] font-medium">{output.name}</p>
@@ -108,7 +109,7 @@ export function StockCard({
         </div>
       </div>
 
-      <p className="text-muted-foreground/70 text-[10px]">
+      <p className="text-muted-foreground text-[10px]">
         Source: {output.source === "crypto" ? "CoinGecko" : "Yahoo Finance"} · 7-day trend
       </p>
     </section>

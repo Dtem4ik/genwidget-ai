@@ -31,17 +31,21 @@ export function FilterChips({ output }: { input: SetFiltersInput; output: SetFil
       data-testid="filters-results"
     >
       <p className="text-muted-foreground flex items-center gap-1.5 text-[13px]">
-        <SlidersHorizontalIcon className="size-4" />
+        <SlidersHorizontalIcon aria-hidden className="size-4" />
         {output.context}
       </p>
       {/* Chips fill the row; Apply sits on the right (stacks on mobile). */}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-        <div className="flex flex-1 gap-2 overflow-x-auto pb-1">
+        <div
+          aria-label={`Filters: ${output.context}`}
+          className="flex flex-1 gap-2 overflow-x-auto pb-1"
+          role="group"
+        >
           {filters.map((f) => (
             <button
               aria-pressed={f.active}
               className={cn(
-                "focus-visible:ring-ring shrink-0 rounded-full border px-3 py-1 text-sm transition-colors focus-visible:ring-2 focus-visible:outline-none",
+                "focus-visible:ring-ring inline-flex min-h-11 shrink-0 items-center rounded-full border px-3 py-1 text-sm transition-colors focus-visible:ring-2 focus-visible:outline-none sm:min-h-0",
                 f.active
                   ? "bg-primary text-primary-foreground border-primary"
                   : "text-muted-foreground hover:bg-muted",

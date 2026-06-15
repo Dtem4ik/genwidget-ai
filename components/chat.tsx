@@ -145,7 +145,7 @@ export function Chat() {
           <ConversationContent>
             {messages.length === 0 && (
               <ConversationEmptyState
-                icon={<MessageSquareIcon className="size-8" />}
+                icon={<MessageSquareIcon aria-hidden className="size-8" />}
                 title="Welcome to GenWidget AI"
                 description="Ask anything — soon the answers arrive as live widgets. For now, it talks."
               />
@@ -162,16 +162,19 @@ export function Chat() {
               );
             })}
             {status === "submitted" && (
-              <div className="text-muted-foreground flex items-center gap-2 text-sm">
+              <div className="text-muted-foreground flex items-center gap-2 text-sm" role="status">
                 <Spinner className="size-4" />
                 Thinking…
               </div>
             )}
             {error && (
-              <div className="border-destructive/50 bg-destructive/10 flex items-center justify-between gap-4 rounded-lg border px-4 py-3 text-sm">
+              <div
+                className="border-destructive/50 bg-destructive/10 flex items-center justify-between gap-4 rounded-lg border px-4 py-3 text-sm"
+                role="alert"
+              >
                 <span>Something went wrong while generating the answer.</span>
                 <Button onClick={() => regenerate()} size="sm" variant="outline">
-                  <RefreshCwIcon className="size-3.5" />
+                  <RefreshCwIcon aria-hidden className="size-3.5" />
                   Retry
                 </Button>
               </div>
@@ -191,15 +194,20 @@ export function Chat() {
             <div className="text-muted-foreground flex items-center gap-1.5 self-start text-xs">
               <span className="bg-primary/10 inline-flex items-center gap-1 rounded-full px-2 py-0.5">
                 Using your key
-                <button aria-label="Remove your key" onClick={removeByok} type="button">
-                  <XIcon className="size-3" />
+                <button
+                  aria-label="Remove your key"
+                  className="focus-visible:ring-ring rounded-full focus-visible:ring-2 focus-visible:outline-none"
+                  onClick={removeByok}
+                  type="button"
+                >
+                  <XIcon aria-hidden className="size-3" />
                 </button>
               </span>
             </div>
           )}
           <PromptInput onSubmit={handleSubmit}>
             <PromptInputBody>
-              <PromptInputTextarea placeholder="Ask anything…" />
+              <PromptInputTextarea aria-label="Message" placeholder="Ask anything…" />
             </PromptInputBody>
             <PromptInputFooter>
               <div />

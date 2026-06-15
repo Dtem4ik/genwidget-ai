@@ -74,14 +74,22 @@ export function WeatherCard({
       </div>
       <div className="text-muted-foreground flex justify-center gap-8 text-[13px]">
         <span className="flex items-center gap-1.5">
-          <WindIcon className="size-4" /> {output.windspeed} km/h
+          <WindIcon aria-hidden className="size-4" />
+          <span>
+            <span className="sr-only">Wind </span>
+            {output.windspeed} km/h
+          </span>
         </span>
         <span className="flex items-center gap-1.5">
-          <DropletsIcon className="size-4" /> {output.humidity}%
+          <DropletsIcon aria-hidden className="size-4" />
+          <span>
+            <span className="sr-only">Humidity </span>
+            {output.humidity}%
+          </span>
         </span>
       </div>
       <a
-        className="text-muted-foreground/70 hover:text-muted-foreground text-center text-[10px]"
+        className="text-muted-foreground hover:text-foreground focus-visible:ring-ring rounded text-center text-[10px] focus-visible:ring-2 focus-visible:outline-none"
         href="https://open-meteo.com/"
         rel="noreferrer"
         target="_blank"

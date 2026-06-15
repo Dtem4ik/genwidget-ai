@@ -16,7 +16,8 @@ stocks) instead of text. Demo at pet1.dtem4ik.dev.
 - `pnpm format` / `pnpm format:check` — prettier
 - `pnpm build` — production build
 - `pnpm test` — vitest (component tests)
-- `pnpm e2e` — playwright (from phase 7)
+- `pnpm e2e` — playwright e2e (chromium; mocks `/api/chat`, runs against the prod build,
+  so it does `next build && next start` for you). `pnpm e2e:ui` for the UI runner.
 
 ## Architecture
 
@@ -45,8 +46,18 @@ full-width with a layout designed for it (hero / horizontal).
 gradient + Lucide icon (`iconForCategory`, icon scales with card size). `imageQuery`
 stays on schemas for alt text.
 
+**Shared widget primitives (`components/widgets/primitives.tsx`):** `WidgetCard` is the
+single source of the card shell (`w-full p-4 sm:p-5 rounded-xl border bg-card`) — both
+the loaded card and its skeleton render through it, so they can't drift (guarded by
+`widgets/widget-shell.test.tsx`). `SpecList` renders a `{label,value}[]` spec map.
+
 **Spec maps:** use an array of `{label, value}`, NOT `z.record()` — Gemini
 function-calling rejects JSON-schema `additionalProperties` (400).
+
+**Accessibility (WCAG 2.1 AA — ADR-006):** decorative Lucide icons are `aria-hidden`;
+icon-only controls and the chat input have accessible names; skeletons set `aria-busy`;
+the thinking indicator/errors are `role="status"`/`role="alert"`; focus-visible rings in
+both themes; trend is never color-only. This is part of the per-widget DoD.
 
 **Widget → chat loop:** `WidgetActionsProvider` (in `chat.tsx`) exposes `useWidgetActions().ask(text)`
 so widget buttons can send follow-up turns.
@@ -58,7 +69,10 @@ switching providers is a one-line change in `lib/ai/provider.ts`. See `docs/mode
 
 - TypeScript strict; no `any`
 - Every widget ships with: skeleton + error + mobile states, light + dark theme,
-  component test covering 3 states (skeleton / data / error)
+  WCAG 2.1 AA accessibility (ADR-006), component test covering 3 states
+  (skeleton / data / error)
+- E2E must mock `/api/chat` — never call the real LLM (flaky + quota); use role/label
+  selectors (ADR-006)
 - New dependencies require an ADR in `docs/adr/`
 - Conventional commits (feat/fix/docs/refactor/test/chore/ci/perf), enforced by commitlint
 - Never commit API keys; document env vars in `.env.example`
@@ -72,7 +86,7 @@ collapsible floor plans, staggered entrance animation.
 
 ## Status
 
-Phases 0–6 done and on prod (pet1.dtem4ik.dev). **All 6 MVP widgets live**:
+Phases 0–7 done and on prod (pet1.dtem4ik.dev). **All 6 MVP widgets live**:
 ApartmentResults, CompareTable, ProductRecommendation (LLM-generated), WeatherCard
 (Open-Meteo), StockCard (CoinGecko/Yahoo), FilterChips (model-controlled UI state).
 Shared EmptyState/ErrorState; widget buttons loop back into the chat.
@@ -82,3 +96,9 @@ Shared EmptyState/ErrorState; widget buttons loop back into the chat.
 bring-your-own-key (`x-byok-key`, localStorage), response cache for suggested prompts
 (`lib/cache.ts`, 24h). Upstash Redis is optional — features no-op without
 `UPSTASH_REDIS_REST_URL`/`UPSTASH_REDIS_REST_TOKEN`; rate-limit also off in dev.
+
+**Quality (phase 7, ADR-006):** WCAG 2.1 AA a11y pass across chat + widgets; 375px mobile
+sweep; deterministic Playwright e2e (`e2e/`, chromium) that mocks the LLM via a hand-built
+UI message stream (`e2e/mock-chat.ts`) — never calls the real model. Playwright runs in CI
+after the build, browsers cached. Shared widget primitives extracted to
+`components/widgets/primitives.tsx`.

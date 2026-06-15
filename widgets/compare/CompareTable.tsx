@@ -97,7 +97,10 @@ export function CompareTable({
             <ul className={cn("flex flex-col gap-1 pt-3", tint(product.recommended))} key={i}>
               {product.pros.map((pro) => (
                 <li className="flex items-start gap-1 text-xs" key={pro}>
-                  <CheckIcon className="mt-0.5 size-3 shrink-0 text-emerald-600 dark:text-emerald-400" />
+                  <CheckIcon
+                    aria-hidden
+                    className="mt-0.5 size-3 shrink-0 text-emerald-700 dark:text-emerald-400"
+                  />
                   {pro}
                 </li>
               ))}
@@ -136,7 +139,7 @@ export function CompareTable({
                 variant="outline"
               >
                 Tell me more
-                <ArrowUpRightIcon className="size-3" />
+                <ArrowUpRightIcon aria-hidden className="size-3" />
               </Button>
               <Button
                 aria-label={`Compare ${product.name} with something cheaper`}
@@ -151,7 +154,7 @@ export function CompareTable({
                 variant="ghost"
               >
                 Something cheaper
-                <ArrowUpRightIcon className="size-3" />
+                <ArrowUpRightIcon aria-hidden className="size-3" />
               </Button>
             </div>
           ))}

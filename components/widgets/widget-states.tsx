@@ -20,7 +20,7 @@ export function EmptyState({
       className="bg-card flex flex-col items-center gap-2 rounded-xl border p-6 text-center"
       data-testid="widget-empty"
     >
-      <Icon className="text-muted-foreground size-6" />
+      <Icon aria-hidden className="text-muted-foreground size-6" />
       <p className="text-muted-foreground text-sm">{message}</p>
       {actionLabel && onAction && (
         <Button onClick={onAction} size="sm" variant="outline">
@@ -42,9 +42,10 @@ export function ErrorState({
     <div
       className="border-destructive/50 bg-destructive/10 flex items-center justify-between gap-3 rounded-lg border px-4 py-3 text-sm"
       data-testid="widget-error"
+      role="alert"
     >
       <span className="flex items-center gap-2">
-        <AlertCircleIcon className="size-4 shrink-0" />
+        <AlertCircleIcon aria-hidden className="size-4 shrink-0" />
         {message}
       </span>
       {onRetry && (

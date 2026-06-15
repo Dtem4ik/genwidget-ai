@@ -58,6 +58,7 @@ export function DomainCard({
     >
       {/* 36px on compact cards, 48px on full-width */}
       <Icon
+        aria-hidden
         className={cn("text-primary/50", size === "sm" ? "size-9" : "size-12")}
         strokeWidth={1.5}
       />
